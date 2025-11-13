@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ヘッダーとフッター読み込み
-  loadHTML("header", "components/header.html");
-  loadHTML("footer", "components/footer.html");
+  loadHTML("header", "/components/header.html");
+  loadHTML("footer", "/components/footer.html");
 
 
   // ------------------------------
