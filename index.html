@@ -356,21 +356,27 @@
     .introjs-tooltip {
         background-color: #ffffff;
         border-radius: 15px;
-        padding: 15px;
         width: 300px;
         font-size:18px;
     }
 
     /* 進捗バーの色 */
     .introjs-progress {
-        background-color: rgb(247, 255, 235);
-        color: #00e626
+        background-color: rgb(177, 177, 177);
     }
 
     /* Next ボタン（黄色） */
     .introjs-nextbutton {
-        background-color: #FFD500;
-        color: #333;
+        background-color: #fffb00 !important;
+        text-shadow: none !important;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 24px;
+        font-weight: bold;
+    }
+    .introjs-nextbutton :hover :active :focus {
+        background-color: #fffb00 !important;
+        text-shadow: none !important;
         border: none;
         border-radius: 12px;
         padding: 10px 24px;
@@ -379,7 +385,8 @@
 
     /* Back ボタン（灰色） */
     .introjs-prevbutton {
-        background-color: #ccc;
+        background-color: #ececec !important;
+        text-shadow: none !important;
         color: #333;
         border: none;
         border-radius: 12px;
@@ -937,9 +944,7 @@
                     showProgress: true,
                     exitOnOverlayClick: false
                 })
-                .oncomplete(function () {
-                    alert('ガイドは終わりました！ページを見てみましょう！');
-                })
+
                 .start();
         }
         // -------------------------------
