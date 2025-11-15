@@ -58,18 +58,15 @@
         background: rgba(0, 0, 0, 0.5);
         display: flex;
         align-items: center;
+        justify-content: center;
         z-index: 2000;
     }
 
     .popup-content {
         background: #fff;
-        margin: auto 10px;
-        padding: 10px 20px;
+        margin: 10px;
+        padding: 0px;
         border-radius: 15px;
-        width: 95%;
-        flex-direction: column;
-        text-align: center;
-        position: relative;
     }
 
     /* popup内 selectの幅を親に合わせる */
@@ -120,6 +117,41 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+    }
+
+    /* === ボタン変更（変更2） === */
+    .popup-next,
+    .popup-back {
+        padding: 14px 28px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    /* 次へ（黄色・横幅広め） */
+    .popup-next {
+        background: #FFD500;
+        color: #333;
+        flex-grow: 2;
+    }
+
+    /* 戻る（白＋グレー線） */
+    .popup-back {
+        background: #fff;
+        border: 2px solid #ccc;
+        color: #666;
+        text-align: center;
+    }
+
+    /* ボタン横並び（下部） */
+    .popup-underbuttons,
+    .popup-buttons {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
     }
 
 
@@ -309,11 +341,32 @@
         align-items: center;
         text-align: center;
         gap: 1rem;
+        justify-content: center;
+        position: relative;
         animation: fadeIn 0.3s ease;
+
+        /* ▼変更1：全カード同じ高さ▼ */
+        height: 400px;
+        width: 350px;
+        padding: 20px;
+        box-sizing: border-box;
+
     }
 
     .popup-card.active {
         display: flex;
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
     }
 
     .popup-buttons {
@@ -347,16 +400,18 @@
         <div class="popup-content" id="popupCardContainer">
             <!-- STEP 1 -->
             <div class="popup-card active" data-step="1">
+                <button class="popup-close">&times;</button>
                 <h3>このサイトを訪れるのは<br>初めてですか？</h3>
                 <div class="popup-buttons">
                     <button class="popup-next" data-answer="yes">はい</button>
-                    <button class="popup-skip" data-answer="no">いいえ</button>
+                    <button class="popup-next" data-answer="no">いいえ</button>
                 </div>
             </div>
 
             <!-- STEP 2 -->
             <div class="popup-card" data-step="2">
-                <h3>あなたは南区市民ですか？</h3>
+                <button class="popup-close">&times;</button>
+                <h3>あなたは<br>札幌市南区民ですか？</h3>
                 <div class="popup-buttons">
                     <button class="popup-next" data-answer="yes">はい</button>
                     <button class="popup-next" data-answer="no">いいえ</button>
@@ -366,7 +421,8 @@
 
             <!-- STEP 3（南区向け立場） -->
             <div class="popup-card" data-step="3">
-                <h3>あなたの立場を教えてください</h3>
+                <button class="popup-close">&times;</button>
+                <h3>あなたの立場を<br>教えてください</h3>
                 <select id="popupAudienceYes">
                     <option value="">選択してください</option>
                     <option value="一人暮らし">一人暮らし</option>
@@ -383,7 +439,8 @@
 
             <!-- STEP 4（南区以外向け立場） -->
             <div class="popup-card" data-step="4">
-                <h3>あなたの立場を教えてください</h3>
+                <button class="popup-close">&times;</button>
+                <h3>あなたの立場を<br>教えてください</h3>
                 <select id="popupAudienceNo">
                     <option value="その他">その他</option>
                     <option value="調べ学習">調べ学習</option>
@@ -398,7 +455,8 @@
 
             <!-- STEP 5（南区民のみ地域選択） -->
             <div class="popup-card" data-step="5">
-                <h3>お住まいの地域を教えてください</h3>
+                <button class="popup-close">&times;</button>
+                <h3>お住まいの地域を<br>教えてください</h3>
                 <select id="popupRegion">
                     <option value="">選択してください</option>
                     <option value="area_1">真駒内柏丘/東町/幸町/泉町/南町</option>
@@ -699,6 +757,12 @@
             });
             currentStep = step;
         }
+
+        document.querySelectorAll('.popup-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        });
 
         // 「次へ」「はい」「いいえ」ボタン
         document.querySelectorAll('.popup-next, .popup-skip').forEach(btn => {
