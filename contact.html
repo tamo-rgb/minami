@@ -4,427 +4,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>札幌市南区</title>
+    <title>札幌市お問い合わせフォーム</title>
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/common.js"></script>
+    <style>
+        /* ========================
+   タブコンテンツ
+======================== */
+        .tab-container {
+            max-width: 700px;
+            margin: 100px auto 50px auto;
+            /* ヘッダー分上マージン */
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        /* タブボタン */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            background-color: #ccc;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .tab-btn.active {
+            background-color: #555;
+            color: #fff;
+        }
+
+        /* タブ内容 */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* フォーム */
+        .tab-content form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .tab-content form input,
+        .tab-content form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .tab-content form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .tab-content form button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        /* タブボタン初期色 */
+        #minami-btn {
+            background-color: #d3d3d3;
+            color: #535353;
+        }
+
+        #sapporo-btn {
+            background-color: #d3d3d3;
+            color: #535353;
+        }
+
+        /* アクティブ時 */
+        #minami-btn.active {
+            background-color: #1a4d1b;
+            color: #fff;
+        }
+
+        /* 濃い緑 */
+        #sapporo-btn.active {
+            background-color: #145a91;
+            color: #fff;
+        }
+
+        /* 濃い青 */
+
+
+        /* 南区：緑 */
+        #minami form button {
+            background-color: #247627;
+            color: #fff;
+        }
+
+        #minami form button:hover {
+            background-color: #89e38c;
+        }
+
+        /* 札幌市：青 */
+        #sapporo form button {
+            background-color: #1e73be;
+            color: #fff;
+        }
+
+        #sapporo form button:hover {
+            background-color: #4aa0e0;
+        }
+
+        /* 背景色切替 */
+        .tab-container.minami {
+            background: linear-gradient(180deg, #eafff2, #ffffff);
+        }
+
+        .tab-container.sapporo {
+            background: linear-gradient(180deg, #d0faff, #ffffff);
+        }
+
+        /* 文字サイズ切替ボタン */
+        .font-switcher {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .font-switcher button {
+            margin: 0 3px;
+            padding: 3px 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        h3{
+            text-align: center;
+            padding-bottom:20px;
+        }
+    </style>
 </head>
-<style>
-    body {
-        background-color: var(--color-pal);
-    }
-
-    /* ===== パンくずリスト ===== */
-    .breadcrumb {
-        margin: 10px;
-        color: #555;
-    }
-
-    .breadcrumb a {
-        color: #2e8b57;
-        /* 緑色リンク */
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    .breadcrumb a:hover {
-        text-decoration: underline;
-    }
-
-    .breadcrumb span {
-        color: #333;
-    }
-
-    .section {
-        padding: 10px;
-        border-top: 1px solid #f0f2f4;
-        margin: 15px;
-        background-color: #ffffff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-
-    /* ===== トグル内容 ===== */
-    /* トグル内容の背景・線・矢印 */
-    .toggle-content {
-        display: none;
-        background: #fff;
-        border-top: 1px solid var(--color-primary);
-    }
-
-    .toggle-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 25px;
-        border-bottom: 1px solid var(--color-primary);
-        color: #2e8b57;
-        text-decoration: none;
-        font-size: 16px;
-        transition: background 0.2s;
-    }
-
-    .toggle-item .arrow {
-        font-size: 14px;
-        color: (--color-primary);
-    }
-
-
-    .toggle-content ul {
-        list-style-type: none;
-        padding-left: 0;
-        margin: 0;
-    }
-
-    .toggle-content li {
-        margin: 5px 0;
-        padding-left: 10px;
-        position: relative;
-    }
-
-    .toggle-content li::before {
-        content: "・";
-        position: absolute;
-        left: 0;
-        color: #2e8b57;
-    }
-
-    .toggle-content a {
-        color: #2e8b57;
-        text-decoration: none;
-    }
-
-    .toggle-content a:hover {
-        text-decoration: underline;
-    }
-
-    /* 開いた時 */
-    .toggle-tab.active {
-        font-size: var(--font-h3);
-        background: var(--color-primary);
-        padding-bottom: 10px;
-    }
-
-
-    /* ===== タブ部分 ===== */
-    /* .tab-card {
-        margin: 15px;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        background-color: #ffffff;
-    } */
-
-
-    /* タブボタンをカード内に並べる */
-    .tab-card-buttons {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 10px;
-    }
-
-    .tab-card-buttons .tab-button {
-        flex: 1;
-        margin: 0 5px;
-        padding: 12px 0;
-        background: var(--color-bg);
-        border-radius: 10px;
-        border: 2px solid var(--color-primary);
-        cursor: pointer;
-        font-weight: bold;
-        color: var(--color-primary);
-        transition: all 0.2s;
-    }
-
-    .tab-card-buttons .tab-button.active {
-        background: var(--color-primary);
-        color: #fff;
-        border-color: var(--color-primary);
-    }
-
-    .tab-card-content .tab-content {
-        display: none;
-    }
-
-    .tab-card-content .tab-content.active {
-        display: block;
-    }
-
-    /* ニュースリストはカード内に合わせる */
-    .tab-card .news-list .list-item {
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-        font-size: var(--font-h3);
-    }
-
-
-    .news-list {
-        background-color: var(--color-primary);
-        color: var(--color-bg);
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .arrow {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-bottom: 2px solid #555;
-        border-right: 2px solid #555;
-        transform: rotate(-45deg);
-    }
-
-    .subtitle {
-        opacity: 0.9;
-    }
-
-    .filter {
-        text-align: center;
-    }
-
-    .filter-btn {
-        font-weight: 500;
-        background: #fff;
-        border: 1px solid #2e8b57;
-        color: #333;
-        padding: 0.3em 0.7em;
-        margin: 3px;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .filter-btn:hover {
-        background: #2e8b57;
-        color: white;
-    }
-
-    .filter-btn.active {
-        background: #2e8b57;
-        color: white;
-    }
-
-    .news-container {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        max-width: 900px;
-        margin: 20px auto;
-    }
-
-    .news-card {
-        display: flex;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-        transition: 0.3s;
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .news-card:hover {
-        transform: translateY(-3px);
-    }
-
-    .news-image {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        flex-shrink: 0;
-    }
-
-    .news-content {
-        padding: 5px 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .news-title {
-        color: var(--color-text);
-        margin: 0 0 10px 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        line-clamp: 3;
-        /* ← 標準プロパティを追加 */
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .news-meta {
-        font-size: var(--font-p);
-        color: #666;
-        margin-bottom: 3px;
-    }
-
-    .tag {
-        display: inline-block;
-        background: #e7f5ee;
-        color: #4a8a63;
-        padding: 0.2em 0.7em;
-        border-radius: 20px;
-        width: fit-content;
-    }
-
-    .end {
-        text-align: center;
-    }
-
-    h3,
-    p {
-        margin: 0px;
-    }
-</style>
 
 <body>
-    <!-- スクロール進捗バー -->
-    <div id="scrollProgress"></div>
-
-    <!-- ポップアップ -->
-    <div id="popup" style="display:none;">
-        <div class="popup-content">
-
-        </div>
-    </div>
 
     <!-- ヘッダー読み込み -->
     <div id="header"></div>
+    <!-- スクロール進捗バー -->
+    <div id="scrollProgress"></div>
 
-    <!-- 余白 -->
-    <div style="height: 60px;  background-color: #ffffff;">
+    <!-- タブフォーム -->
+    <div class="tab-container minami">
+        <div class="tabs">
+            <div class="tab-btn active" id="minami-btn" data-tab="minami">札幌市南区</div>
+            <div class="tab-btn" id="sapporo-btn" data-tab="sapporo">札幌市</div>
+        </div>
+
+        <div class="tab-content active" id="minami">
+            <h3>札幌市南区用<br>お問い合わせフォーム</h3>
+            <form action="#" method="post">
+                <label for="name1">お名前<span style="color:red;">*</span></label>
+                <input type="text" id="name1" name="name" required>
+                <label for="email1">メールアドレス<span style="color:red;">*</span></label>
+                <input type="email" id="email1" name="email" required>
+                <label for="subject1">件名</label>
+                <input type="text" id="subject1" name="subject">
+                <label for="message1">お問い合わせ内容<span style="color:red;">*</span></label>
+                <textarea id="message1" name="message" required></textarea>
+                <button type="submit">送信する</button>
+            </form>
+        </div>
+
+        <div class="tab-content" id="sapporo">
+            <h3>札幌市用<br>お問い合わせフォーム</h3>
+            <form action="#" method="post">
+                <label for="name2">お名前<span style="color:red;">*</span></label>
+                <input type="text" id="name2" name="name" required>
+                <label for="email2">メールアドレス<span style="color:red;">*</span></label>
+                <input type="email" id="email2" name="email" required>
+                <label for="subject2">件名</label>
+                <input type="text" id="subject2" name="subject">
+                <label for="message2">お問い合わせ内容<span style="color:red;">*</span></label>
+                <textarea id="message2" name="message" required></textarea>
+                <button type="submit">送信する</button>
+            </form>
+        </div>
     </div>
 
-    <main>
-        <section style="height:300px; display:flex; justify-content: center; align-items: center;">
-            <h2 style="color:green">Contact</h2>
+    <!-- フッター読み込み -->
+    <div id="footer"></div>
 
-        </section>
+    <script>
+        // タブ切り替え
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const tabContainer = document.querySelector('.tab-container');
 
-
-
-        <!-- フッター読み込み -->
-        <div id="footer"></div>
-
-        <!-- JS 読み込み -->
-
-        <script>
-            // タブ切り替え
-            const cardTabs = document.querySelectorAll('.tab-card .tab-button');
-            const cardContents = document.querySelectorAll('.tab-card .tab-content');
-
-            cardTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    cardTabs.forEach(t => t.classList.remove('active'));
-                    cardContents.forEach(c => c.classList.remove('active'));
-                    tab.classList.add('active');
-                    document.getElementById(tab.dataset.tab).classList.add('active');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const target = btn.dataset.tab;
+                tabContents.forEach(c => {
+                    c.classList.remove('active');
+                    if (c.id === target) c.classList.add('active');
                 });
-            });
-            const list = document.getElementById('extra-list');
-            const sortSelect = document.getElementById('sort-select');
-            const tagSelect = document.getElementById('tag-select');
-
-            function filterAndSort() {
-                const items = Array.from(list.querySelectorAll('.list-item'));
-                const tagFilter = tagSelect.value;
-                const sortOption = sortSelect.value;
-
-                let filtered = items;
-            }
-
-            document.addEventListener("DOMContentLoaded", function () {
-                const articles = [
-                    { title: "秋の健康フェア開催！血圧測定や栄養相談も", date: "2025-10-01", tag: "イベント", img: "https://placehold.jp/150x150.png?text=健康フェア", link: "#" },
-                    { title: "災害時に備える！家庭でできる防災準備チェックリスト", date: "2025-09-25", tag: "防災", img: "https://placehold.jp/150x150.png?text=防災準備", link: "#" },
-                    { title: "免疫力を高める食材5選", date: "2025-09-20", tag: "健康", img: "https://placehold.jp/150x150.png?text=免疫力アップ", link: "#" },
-                    { title: "地域の健康ウォーキング大会レポート", date: "2025-09-15", tag: "イベント", img: "https://placehold.jp/150x150.png?text=ウォーキング", link: "#" },
-                    { title: "非常食の選び方とローリングストックのコツ", date: "2025-09-10", tag: "防災", img: "https://placehold.jp/150x150.png?text=非常食", link: "#" },
-                    { title: "睡眠の質を高める夜の習慣", date: "2025-08-30", tag: "健康", img: "https://placehold.jp/150x150.png?text=睡眠習慣", link: "#" },
-                    { title: "健康イベント2025＠東京ビッグサイト開催決定！", date: "2025-08-20", tag: "イベント", img: "https://placehold.jp/150x150.png?text=イベント開催", link: "#" },
-                    { title: "熱中症対策：正しい水分補給のポイント", date: "2025-08-10", tag: "健康", img: "https://placehold.jp/150x150.png?text=水分補給", link: "#" },
-                    { title: "地震時の避難行動を見直そう", date: "2025-07-25", tag: "防災", img: "https://placehold.jp/150x150.png?text=地震対策", link: "#" },
-                    { title: "ストレスを減らす呼吸法のススメ", date: "2025-07-15", tag: "健康", img: "https://placehold.jp/150x150.png?text=呼吸法", link: "#" },
-                ];
-
-                const container = document.getElementById("news-container");
-                const buttons = document.querySelectorAll(".filter-btn");
-
-                function displayArticles(tag) {
-                    container.innerHTML = "";
-                    const filtered = tag === "all" ? articles : articles.filter(a => a.tag === tag);
-
-                    filtered.forEach(a => {
-                        const card = document.createElement("a");
-                        card.classList.add("news-card");
-                        card.href = a.link;
-                        card.innerHTML = `
-        <img src="${a.img}" alt="${a.title}" class="news-image" />
-        <div class="news-content">
-          <div class="news-meta">${a.date}</div>
-          <h2 class="news-title">${a.title}</h2>
-          <span class="tag">${a.tag}</span>
-        </div>
-      `;
-                        container.appendChild(card);
-                    });
+                if (target === 'minami') {
+                    tabContainer.classList.remove('sapporo');
+                    tabContainer.classList.add('minami');
+                } else {
+                    tabContainer.classList.remove('minami');
+                    tabContainer.classList.add('sapporo');
                 }
-
-                displayArticles("all");
-
-                buttons.forEach(btn => {
-                    btn.addEventListener("click", () => {
-                        buttons.forEach(b => b.classList.remove("active"));
-                        btn.classList.add("active");
-                        displayArticles(btn.dataset.tag);
-                    });
-                });
             });
-            // -------------------------------
-            // 文字サイズ切り替え（CSS変数対応）
-            // -------------------------------
-            const fontSizeRadios = document.querySelectorAll('input[name="font-size"]');
+        });
 
-            // ページ読み込み時に保存値があれば反映
-            const savedFontSize = localStorage.getItem('fontSize');
-            if (savedFontSize) {
+        // 文字サイズ切替
+        const fontButtons = document.querySelectorAll('.font-switcher button');
+        fontButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = btn.dataset.size;
                 document.body.classList.remove('font-small', 'font-large');
-                if (savedFontSize === 'small') document.body.classList.add('font-small');
-                if (savedFontSize === 'large') document.body.classList.add('font-large');
-
-                // ラジオボタンもチェック状態に
-                fontSizeRadios.forEach(radio => {
-                    if (radio.value === savedFontSize) radio.checked = true;
-                });
-            }
-
-            // 選択変更時
-            fontSizeRadios.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    document.body.classList.remove('font-small', 'font-large');
-                    if (radio.value === 'small') document.body.classList.add('font-small');
-                    if (radio.value === 'large') document.body.classList.add('font-large');
-                    // 中の場合はクラスなし（デフォルト）
-
-                    // localStorageに保存
-                    localStorage.setItem('fontSize', radio.value);
-                });
+                if (size === 'small') document.body.classList.add('font-small');
+                if (size === 'large') document.body.classList.add('font-large');
+                localStorage.setItem('fontSize', size);
             });
-            // トグルスクリプト 
-            const tabs = document.querySelectorAll('.toggle-tab');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tab.classList.toggle('active');
-                    const content = tab.nextElementSibling;
-                    if (content.style.display === 'block') {
-                        content.style.display = 'none';
-                    } else {
-                        content.style.display = 'block';
-                    }
-                });
-            });
+        });
 
-        </script>
+        // 保存サイズの反映
+        const savedSize = localStorage.getItem('fontSize');
+        if (savedSize) {
+            document.body.classList.remove('font-small', 'font-large');
+            if (savedSize === 'small') document.body.classList.add('font-small');
+            if (savedSize === 'large') document.body.classList.add('font-large');
+        }
+    </script>
 </body>
 
 </html>
