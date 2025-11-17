@@ -150,52 +150,6 @@
         margin-top: 1rem;
     }
 
-    #contents {
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .content-box {
-        display: flex;
-        padding: 10px 20px 10px 10px;
-        border-radius: 20px;
-        align-items: center;
-        background-color: var(--color-primary);
-        text-decoration: none;
-    }
-
-    .content-box .arrow {
-        display: inline-block;
-        margin-left: auto;
-        width: 10px;
-        height: 10px;
-        border-bottom: 5px solid #fffdf9;
-        border-right: 5px solid #fffdf9;
-        transform: rotate(-45deg);
-    }
-
-    .content-box .icon img {
-        width: 3em;
-        padding: 0.5em;
-        object-fit: contain;
-    }
-
-    .content-box .text {
-        padding: 0px 0.5em;
-        color: var(--color-bg);
-    }
-
-    .content-box h2,
-    .content-box h4 {
-        margin: 0px;
-    }
-
-    .content-box h2 {
-        margin-bottom: 0.2em;
-    }
-
     .popup-card {
         display: none;
         flex-direction: column;
@@ -233,6 +187,29 @@
     .popup-buttons {
         display: flex;
         gap: 1rem;
+    }
+
+    /* -------------------------contents-------------------------*/
+
+    #contents {
+        padding: 0px 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .content-box {
+        flex: 1;
+        background: var(--color-primary);
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .content-box .icon img {
+        width: 3em;
+        object-fit: contain;
     }
 
 
@@ -544,6 +521,10 @@
         </section>
 
         <!-- コンテンツボックス -->
+        <script async src="https://cse.google.com/cse.js?cx=d50400fa95b444d4e">
+        </script>
+        <div class="gcse-search"></div>
+
         <section id="contents">
             <a href="search.html" class="content-box">
                 <div class="icon">
@@ -551,21 +532,21 @@
                 </div>
                 <div class="text">
                     <h2>情報を探す</h2>
-                    <h4>手続きを知りたい</h4>
+                    <!-- <h4>手続きを知りたい</h4> -->
                 </div>
-                <div class="arrow"></div>
             </a>
             <a href="news.html" class="content-box">
                 <div class="icon">
-                    <img src="data/home_2.png" alt="情報を探すアイコン">
+                    <img src="data/home_2.png" alt="お知らせアイコン">
                 </div>
                 <div class="text">
-                    <h2>お知らせを見る</h2>
-                    <h4>ニュース/イベントを見る</h4>
+                    <h2>お知らせ</h2>
+                    <!-- <h4>ニュース/イベントを見る</h4> -->
                 </div>
-                <div class="arrow"></div>
             </a>
         </section>
+
+
         <section class="personalize">
             <div class="toggle-list">
                 <div id="tog-header" class="toggle-header">カスタマイズをする<span>+</span></div>
