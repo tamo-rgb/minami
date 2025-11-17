@@ -189,7 +189,7 @@ header {
     right: 0;
     width: 5px;
     height: 0;
-    background-color: var(--color-secondary);
+    background-color:#629c2b;
     z-index: 1000;
 }
 
