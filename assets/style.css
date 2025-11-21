@@ -39,6 +39,8 @@ body.font-large {
 
 body {
     font-size: var(--font-body);
+    max-width: 375px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -270,9 +272,9 @@ footer {
     margin-right: 3px;
 }
 
-.open{
+.open {
     border: solid 1px #ffffff;
-    padding:10px;
+    padding: 10px;
 }
 
 
