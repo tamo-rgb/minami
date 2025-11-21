@@ -36,6 +36,14 @@ body.font-large {
     --font-label: 20px;
 }
 
+.wrapper {
+    width: 375px;
+    /* スマホ幅に固定 */
+    margin: 0 auto;
+    /* 中央寄せ */
+}
+
+
 
 body {
     font-size: var(--font-body);
@@ -93,6 +101,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     letter-spacing: 0.1em;
+    align-items: center;
 }
 
 /* -------------------------------
@@ -100,10 +109,6 @@ body {
 --------------------------------- */
 header {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
     background-color: var(--color-primary);
     color: #fffdf9;
     display: flex;
@@ -111,6 +116,7 @@ header {
     align-items: center;
     padding: 0 20px;
     z-index: 1000;
+    left: 0; right: 0; margin: 0 auto; width: 375px;
 }
 
 .box_emergency {
@@ -281,15 +287,12 @@ footer {
 /* 下部固定バー */
 .bottom-bar {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
     background-color: #525252;
     display: flex;
     justify-content: space-around;
     align-items: center;
     z-index: 1000;
+    left: 0; right: 0; margin: 0 auto; width: 375px;
 }
 
 .bottom-bar a.bottom-btn {

@@ -18,9 +18,19 @@
 </head>
 <style>
     body {
-  max-width: 375px;
-  margin: 0 auto; /* 中央寄せ */
-}
+        max-width: 375px;
+        margin: 0 auto;
+        /* 中央寄せ */
+    }
+
+    .wrapper {
+        width: 375px;
+        /* スマホ幅固定 */
+        margin: 0 auto;
+        /* 中央寄せ */
+        background: #fff;
+        box-sizing: border-box;
+    }
 
     /* =========================
    Heroスライドショー
@@ -486,104 +496,107 @@
 </style>
 
 <body>
-    <!-- スクロール進捗バー -->
-    <div id="scrollProgress"></div>
+    <div class="wrapper">
 
-    <!-- ポップアップ：カード方式 -->
-    <div id="popup" style="display:none;">
-        <div class="popup-content" id="popupCardContainer">
-            <!-- STEP 1 -->
-            <div class="popup-card active" data-step="1">
-                <button class="popup-close">&times;</button>
-                <h3>ガイドを利用しますか？<br></h3>
-                <div class="popup-buttons">
-                    <button class="popup-next" data-answer="yes">はい</button>
-                    <button class="popup-next" data-answer="no">いいえ</button>
+        <!-- スクロール進捗バー -->
+        <div id="scrollProgress"></div>
+        <!-- ポップアップ：カード方式 -->
+        <div id="popup" style="display:none;">
+            <div class="popup-content" id="popupCardContainer">
+                <!-- STEP 1 -->
+                <div class="popup-card active" data-step="1">
+                    <button class="popup-close">&times;</button>
+                    <h3>ガイドを利用しますか？<br></h3>
+                    <div class="popup-buttons">
+                        <button class="popup-next" data-answer="yes">はい</button>
+                        <button class="popup-next" data-answer="no">いいえ</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- STEP 2 -->
-            <div class="popup-card" data-step="2">
-                <button class="popup-close">&times;</button>
-                <h3>あなたは<br>札幌市南区民ですか？</h3>
-                <div class="popup-buttons">
-                    <button class="popup-next" data-answer="yes">はい</button>
-                    <button class="popup-next" data-answer="no">いいえ</button>
-                </div>
-                <button class="popup-back">戻る</button>
-            </div>
-
-            <!-- STEP 3（南区向け立場） -->
-            <div class="popup-card" data-step="3">
-                <button class="popup-close">&times;</button>
-                <h3>あなたの立場を<br>教えてください</h3>
-                <select id="popupAudienceYes">
-                    <option value="">選択してください</option>
-                    <option value="一人暮らし">一人暮らし</option>
-                    <option value="事業者">事業者</option>
-                    <option value="子育て">子育て</option>
-                    <option value="シニア">シニア</option>
-                    <option value="その他">その他</option>
-                </select>
-                <div class="popup-underbuttons">
+                <!-- STEP 2 -->
+                <div class="popup-card" data-step="2">
+                    <button class="popup-close">&times;</button>
+                    <h3>あなたは<br>札幌市南区民ですか？</h3>
+                    <div class="popup-buttons">
+                        <button class="popup-next" data-answer="yes">はい</button>
+                        <button class="popup-next" data-answer="no">いいえ</button>
+                    </div>
                     <button class="popup-back">戻る</button>
-                    <button class="popup-next">次へ</button>
                 </div>
-            </div>
 
-            <!-- STEP 4（南区以外向け立場） -->
-            <div class="popup-card" data-step="4">
-                <button class="popup-close">&times;</button>
-                <h3>あなたの立場を<br>教えてください</h3>
-                <select id="popupAudienceNo">
-                    <option value="その他">その他</option>
-                    <option value="調べ学習">調べ学習</option>
-                    <option value="引っ越し検討">引っ越しを検討</option>
-                    <option value="観光">観光</option>
-                </select>
-                <div class="popup-underbuttons">
+                <!-- STEP 3（南区向け立場） -->
+                <div class="popup-card" data-step="3">
+                    <button class="popup-close">&times;</button>
+                    <h3>あなたの立場を<br>教えてください</h3>
+                    <select id="popupAudienceYes">
+                        <option value="">選択してください</option>
+                        <option value="一人暮らし">一人暮らし</option>
+                        <option value="事業者">事業者</option>
+                        <option value="子育て">子育て</option>
+                        <option value="シニア">シニア</option>
+                        <option value="その他">その他</option>
+                    </select>
+                    <div class="popup-underbuttons">
+                        <button class="popup-back">戻る</button>
+                        <button class="popup-next">次へ</button>
+                    </div>
+                </div>
+
+                <!-- STEP 4（南区以外向け立場） -->
+                <div class="popup-card" data-step="4">
+                    <button class="popup-close">&times;</button>
+                    <h3>あなたの立場を<br>教えてください</h3>
+                    <select id="popupAudienceNo">
+                        <option value="その他">その他</option>
+                        <option value="調べ学習">調べ学習</option>
+                        <option value="引っ越し検討">引っ越しを検討</option>
+                        <option value="観光">観光</option>
+                    </select>
+                    <div class="popup-underbuttons">
+                        <button class="popup-back">戻る</button>
+                        <button class="popup-next">次へ</button>
+                    </div>
+                </div>
+
+                <!-- STEP 5（南区民のみ地域選択） -->
+                <div class="popup-card" data-step="5">
+                    <button class="popup-close">&times;</button>
+                    <h3>お住まいの地域を<br>教えてください</h3>
+                    <select id="popupRegion">
+                        <option value="">選択してください</option>
+                        <option value="area_1">真駒内柏丘/東町/幸町/泉町/南町</option>
+                        <option value="area_2">石山東/常盤/滝野/芸術の森</option>
+                        <option value="area_3">藤野/白川/簾舞/砥山/豊滝/硬石山/小金湯/定山渓温泉西・東/定山渓</option>
+                        <option value="area_4">真駒内本町/容町/曙町/緑町</option>
+                        <option value="area_5">藻岩下・北ノ沢・中ノ沢/南30条～39条の西</option>
+                        <option value="area_6">南沢・石山</option>
+                        <option value="area_7">真駒内・川沿</option>
+                        <option value="area_8">澄川</option>
+                        <option value="なし">なし</option>
+                    </select>
+                    <div class="popup-underbuttons">
+                        <button class="popup-back">戻る</button>
+                        <button class="popup-next">次へ</button>
+                    </div>
+                </div>
+
+                <!-- STEP 6（ガイド開始） -->
+                <div class="popup-card" data-step="6">
+                    <h3>設定が完了しました！<br>ガイドを開始します</h3>
+                    <button id="popupSubmit">サイトを見る</button>
                     <button class="popup-back">戻る</button>
-                    <button class="popup-next">次へ</button>
                 </div>
-            </div>
-
-            <!-- STEP 5（南区民のみ地域選択） -->
-            <div class="popup-card" data-step="5">
-                <button class="popup-close">&times;</button>
-                <h3>お住まいの地域を<br>教えてください</h3>
-                <select id="popupRegion">
-                    <option value="">選択してください</option>
-                    <option value="area_1">真駒内柏丘/東町/幸町/泉町/南町</option>
-                    <option value="area_2">石山東/常盤/滝野/芸術の森</option>
-                    <option value="area_3">藤野/白川/簾舞/砥山/豊滝/硬石山/小金湯/定山渓温泉西・東/定山渓</option>
-                    <option value="area_4">真駒内本町/容町/曙町/緑町</option>
-                    <option value="area_5">藻岩下・北ノ沢・中ノ沢/南30条～39条の西</option>
-                    <option value="area_6">南沢・石山</option>
-                    <option value="area_7">真駒内・川沿</option>
-                    <option value="area_8">澄川</option>
-                    <option value="なし">なし</option>
-                </select>
-                <div class="popup-underbuttons">
-                    <button class="popup-back">戻る</button>
-                    <button class="popup-next">次へ</button>
-                </div>
-            </div>
-
-            <!-- STEP 6（ガイド開始） -->
-            <div class="popup-card" data-step="6">
-                <h3>設定が完了しました！<br>ガイドを開始します</h3>
-                <button id="popupSubmit">サイトを見る</button>
-                <button class="popup-back">戻る</button>
             </div>
         </div>
-    </div>
 
 
-    <!-- ヘッダー読み込み -->
-    <div id="header"></div>
+        <!-- ヘッダー読み込み -->
+        <div id="header"></div>
 
-    <!-- 余白 -->
-    <div style="height: 60px;  background-color: #ffffff;">
+        <!-- 余白 -->
+        <div style="height: 60px;  background-color: #ffffff;">
+        </div>
+
     </div>
 
     <main>
