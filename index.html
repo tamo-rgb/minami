@@ -347,7 +347,7 @@
         color: #ffffff;
         border-radius: 8px;
         text-decoration: none;
-            /* 右寄せ用 */
+        /* 右寄せ用 */
         float: right;
     }
 
@@ -487,7 +487,7 @@
             <!-- STEP 1 -->
             <div class="popup-card active" data-step="1">
                 <button class="popup-close">&times;</button>
-                <h3>このサイトを訪れるのは<br>初めてですか？</h3>
+                <h3>ガイドを利用しますか？<br></h3>
                 <div class="popup-buttons">
                     <button class="popup-next" data-answer="yes">はい</button>
                     <button class="popup-next" data-answer="no">いいえ</button>
@@ -853,13 +853,12 @@
             introJs().setOptions({
                 steps: [
                     { element: '#emergency', intro: 'ここから緊急情報・緊急時の対応を確認できます', position: 'bottom' },
-                    { element: '#contents', intro: 'ここから目的別で情報を探すことができます', position: 'top' },
                     { element: '#tog-header', intro: 'ここでは、おすすめ情報がカスタマイズできます！<br>ボタンを押して設定画面を開けます！', position: 'right' },
                     { element: '#start-tour', intro: 'このボタンを押すと、今のガイドを見れます', position: 'top' }
                 ],
                 showProgress: true,
                 exitOnOverlayClick: false
-            }).oncomplete(() => alert('ガイドは終わりました！ページを見てみましょう！')).start();
+            }).start();
         }
 
         /* ============================================================
@@ -964,6 +963,16 @@
                 });
             });
         }
+
+        // 閉じるボタンを取得
+        const popupCloseBtns = document.querySelectorAll('.popup-close');
+
+        // クリック時に popup を非表示にする
+        popupCloseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        });
 
         /* ============================================================
            🟢 ページ初期化

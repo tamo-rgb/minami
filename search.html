@@ -15,6 +15,44 @@
 
 </head>
 <style>
+  /* =========================
+   Intro.js ツアー
+========================= */
+  .introjs-tooltip {
+    background-color: #ffffff;
+    border-radius: 15px;
+    width: 300px;
+    font-size: 18px;
+  }
+
+  .introjs-progress {
+    background-color: rgb(177, 177, 177);
+  }
+
+  .introjs-nextbutton {
+    background-color: #FFD500 !important;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: bold;
+  }
+
+  .introjs-prevbutton {
+    background-color: #ececec !important;
+    color: #333;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: bold;
+  }
+
+  .end {
+    text-align: center;
+  }
+
+  /* =========================
+   汎用ボタン
+========================= */
   /* ===== パンくずリスト ===== */
   .breadcrumb {
     margin: 10px;
@@ -179,128 +217,128 @@
 
   <main>
     <!-- パンくずリスト -->
-     <div id="bread">
-    <nav class="breadcrumb">
-      <a href="index.html">ホームページ</a> ＞ <span>情報を探す</span>
-    </nav>
+    <div id="bread">
+      <nav class="breadcrumb">
+        <a href="index.html">ホームページ</a> ＞ <span>情報を探す</span>
+      </nav>
     </div>
 
-<div id="find">
-    <section class="section" id="s_1">
-      <h3 class="omidashi">カテゴリーから探す</h3>
-      <div class="grid">
-        <a href="/search/search_living.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_1.png" alt="手続きアイコン">
-          </div>
-          <h3>暮らし・手続き</h3>
-          <p>住民票/税金/ごみ/町内会</p>
-        </a>
-        <a href="search/search_comfort.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_2.png" alt="健康アイコン">
-          </div>
-          <h3>防災・安全</h3>
-          <p>避難所・災害情報</p>
-        </a>
-        <a href="search/search_health.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_3.png" alt="手続きアイコン">
-          </div>
-          <h3>子育て・健康<br>福祉</h3>
-          <p>健康診断/介護<br>医療機について</p>
-        </a>
-        <a href="search/search_town.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_5.png" alt="健康アイコン">
-          </div>
-          <h3>環境・施設</h3>
-          <p>施設/公園設備/雪対策/道路整備</p>
-        </a>
+    <div id="find">
+      <section class="section" id="s_1">
+        <h3 class="omidashi">カテゴリーから探す</h3>
+        <div class="grid">
+          <a href="/search/search_living.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_1.png" alt="手続きアイコン">
+            </div>
+            <h3>暮らし・手続き</h3>
+            <p>住民票/税金/ごみ/町内会</p>
+          </a>
+          <a href="search/search_comfort.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_2.png" alt="健康アイコン">
+            </div>
+            <h3>防災・安全</h3>
+            <p>避難所・災害情報</p>
+          </a>
+          <a href="search/search_health.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_3.png" alt="手続きアイコン">
+            </div>
+            <h3>子育て・健康<br>福祉</h3>
+            <p>健康診断/介護<br>医療機について</p>
+          </a>
+          <a href="search/search_town.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_5.png" alt="健康アイコン">
+            </div>
+            <h3>環境・施設</h3>
+            <p>施設/公園設備/雪対策/道路整備</p>
+          </a>
 
-        <a href="search/search_event.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_6.png" alt="健康アイコン">
-          </div>
-          <h3>文化・イベント</h3>
-          <p>観光地<br>地域イベント</p>
-        </a>
-        <a href="search/search_public.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_4.png" alt="健康アイコン">
-          </div>
-          <h3>市政・広報</h3>
-          <p>市の方針・計画<br>広報さっぽろ</p>
-        </a>
-      </div>
-    </section>
-    <section class="section" id="s_2">
-      <h3 class="omidashi">対象者から探す</h3>
-      <div class="grid_target">
-        <a href="uncompleted.html" class="card">
-          <h3>事業者</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <h3>高齢者介護</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <h3>障がい者</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <h3>観光者</h3>
-        </a>
-      </div>
-    </section>
-    <section class="section" id="s_3">
-      <h3 class="omidashi">できごとから探す</h3>
-      <div class="grid_event">
-        <a href="uncompleted.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_7.png" alt="手続きアイコン">
-          </div>
-          <h3>引っ越し</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_8.png" alt="健康アイコン">
-          </div>
-          <h3>結婚</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_9.png" alt="健康アイコン">
-          </div>
-          <h3>離婚</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_10.png" alt="手続きアイコン">
-          </div>
-          <h3>妊娠・出産</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_11.png" alt="手続きアイコン">
-          </div>
-          <h3>就職・退職</h3>
-        </a>
-        <a href="uncompleted.html" class="card">
-          <div class="card-icon">
-            <img src="data/search_12.png" alt="健康アイコン">
-          </div>
-          <h3>おくやみ</h3>
-        </a>
-      </div>
-    </section>
-    <section class="section" id="s_4">
-      <h3 class="omidashi">どこかわからないとき</h3>
-      <div class="grid_chat">
-        <a href="uncompleted.html" class="card">
-          <h3>チャットボットが対応します</h3>
-        </a>
-      </div>
-    </section>
-  </div>
+          <a href="search/search_event.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_6.png" alt="健康アイコン">
+            </div>
+            <h3>文化・イベント</h3>
+            <p>観光地<br>地域イベント</p>
+          </a>
+          <a href="search/search_public.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_4.png" alt="健康アイコン">
+            </div>
+            <h3>市政・広報</h3>
+            <p>市の方針・計画<br>広報さっぽろ</p>
+          </a>
+        </div>
+      </section>
+      <section class="section" id="s_2">
+        <h3 class="omidashi">対象者から探す</h3>
+        <div class="grid_target">
+          <a href="uncompleted.html" class="card">
+            <h3>事業者</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <h3>高齢者介護</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <h3>障がい者</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <h3>観光者</h3>
+          </a>
+        </div>
+      </section>
+      <section class="section" id="s_3">
+        <h3 class="omidashi">できごとから探す</h3>
+        <div class="grid_event">
+          <a href="uncompleted.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_7.png" alt="手続きアイコン">
+            </div>
+            <h3>引っ越し</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_8.png" alt="健康アイコン">
+            </div>
+            <h3>結婚</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_9.png" alt="健康アイコン">
+            </div>
+            <h3>離婚</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_10.png" alt="手続きアイコン">
+            </div>
+            <h3>妊娠・出産</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_11.png" alt="手続きアイコン">
+            </div>
+            <h3>就職・退職</h3>
+          </a>
+          <a href="uncompleted.html" class="card">
+            <div class="card-icon">
+              <img src="data/search_12.png" alt="健康アイコン">
+            </div>
+            <h3>おくやみ</h3>
+          </a>
+        </div>
+      </section>
+      <section class="section" id="s_4">
+        <h3 class="omidashi">どこかわからないとき</h3>
+        <div class="grid_chat">
+          <a href="uncompleted.html" class="card">
+            <h3>チャットボットが対応します</h3>
+          </a>
+        </div>
+      </section>
+    </div>
 
   </main>
 
@@ -310,45 +348,45 @@
   <!-- JS 読み込み -->
 
   <script>
-window.addEventListener('load', () => {
-    const hasVisitedSearch = localStorage.getItem('hasVisitedSearch');
+    window.addEventListener('load', () => {
+      const hasVisitedSearch = localStorage.getItem('hasVisitedSearch');
 
-    if (!hasVisitedSearch) {
+      if (!hasVisitedSearch) {
         // 初回訪問 → ツアーを自動開始
         startTourSearch();
 
         // 2回目以降は表示しないようにフラグを保存
         localStorage.setItem('hasVisitedSearch', 'true');
-    }
+      }
 
-    // フォントサイズ設定はそのまま
-    const savedFontSize = localStorage.getItem('fontSize');
-    if (savedFontSize) {
+      // フォントサイズ設定はそのまま
+      const savedFontSize = localStorage.getItem('fontSize');
+      if (savedFontSize) {
         document.body.classList.remove('font-small', 'font-large');
         if (savedFontSize === 'small') document.body.classList.add('font-small');
         if (savedFontSize === 'large') document.body.classList.add('font-large');
         document.querySelectorAll('input[name="font-size"]').forEach(radio => {
-            if (radio.value === savedFontSize) radio.checked = true;
+          if (radio.value === savedFontSize) radio.checked = true;
         });
-    }
-});
+      }
+    });
 
-// ツアー開始関数（search用）
-function startTourSearch() {
-    introJs()
+    // ツアー開始関数（search用）
+    function startTourSearch() {
+      introJs()
         .setOptions({
-            steps: [
-                {
-                    element: '#bread',
-                    intro: 'ここから前のページに戻ることができます',
-                    position: 'bottom'
-                },
-            ],
-            showProgress: true,
-            exitOnOverlayClick: false
+          steps: [
+            {
+              element: '#bread',
+              intro: 'ここから前のページに戻ることができます',
+              position: 'bottom'
+            },
+          ],
+          showProgress: true,
+          exitOnOverlayClick: false
         })
         .start();
-}
+    }
 
     // -------------------------------
     // 文字サイズ切り替え（CSS変数対応）

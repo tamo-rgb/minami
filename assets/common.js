@@ -12,6 +12,30 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(err => console.error(`Error loading ${url}:`, err));
   }
+  function loadHTML(id, url) {
+    fetch(url)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById(id).innerHTML = data;
+        if (id === "header") {
+          // メニュー開閉の設定をヘッダー読み込み後に実行
+          const toggle = document.getElementById("menuToggle");
+          const sideMenu = document.getElementById("sideMenu");
+          if (toggle && sideMenu) {
+            toggle.addEventListener("click", () => {
+              sideMenu.classList.toggle("open");
+            });
+            // メニュー内リンクをクリックしたら閉じるようにしておくのも親切
+            sideMenu.querySelectorAll("a").forEach(link => {
+              link.addEventListener("click", () => {
+                sideMenu.classList.remove("open");
+              });
+            });
+          }
+        }
+      })
+      .catch(err => console.error(`Error loading ${url}:`, err));
+  }
 
   // ヘッダーとフッター読み込み
   loadHTML("header", "/components/header.html");
