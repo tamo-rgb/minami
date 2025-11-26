@@ -79,6 +79,7 @@ button {
 
 :root {
     /* メインカラー */
+    --color-dkgr: #175a1a;
     --color-primary: #247627;
     --color-secondary: #89e38c;
     --color-palegreen: #eafff2;
@@ -101,7 +102,7 @@ body {
 --------------------------------- */
 header {
     position: fixed;
-    background-color: var(--color-primary);
+    background-color: var(--color-dkgr);
     color: #fffdf9;
     display: flex;
     justify-content: space-between;
@@ -221,7 +222,7 @@ header {
 
 /* footer */
 footer {
-    background-color: var(--color-primary);
+    background-color: var(--color-dkgr);
     color: var(--color-bg);
 
     .font-medium {

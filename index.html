@@ -363,8 +363,8 @@
 
     .region-cards {
         display: flex;
-        gap: 5px;
-        margin-bottom: 5px;
+        gap: 10px;
+        margin-bottom: 10px;
         align-items: center;
     }
 
@@ -455,26 +455,34 @@
 
     .slider-dots {
         display: flex;
-        gap: 6px;
+        gap: 10px;
     }
 
     .slider-dot {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
-        background: #ccc;
+        background: #222222;
         border: none;
         padding: 0;
     }
 
     /* アクティブなスライドのドット */
     .slider-dot.active {
-        background: #333;
+        position: relative;
+        overflow: hidden;
+        background: #eee;
         transform: scale(1.6);
-        transition: transform 0.2s ease, background 0.2s ease;
-        /* ちょっと時間の経過感を出したいなら、下のアニメーションをオンにしてもOK
-    animation: dotProgress var(--slide-interval, 5s) linear forwards;
-    */
+    }
+
+    /* 円形タイマー（塗りつぶし） */
+    .slider-dot.active::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(#222222 0deg var(--progress, 0deg),
+                transparent var(--progress, 0deg) 360deg);
     }
 
     /* （オプション）アクティブ中ゆっくり大きくしていきたい場合用 */
@@ -638,7 +646,7 @@
         <div id="header"></div>
 
         <!-- 余白 -->
-        <div style="height: 60px;  background-color: #ffffff;">
+        <div style="height: 55px;  background-color: #ffffff;">
         </div>
 
     </div>
@@ -996,11 +1004,13 @@
         // 次へ / 前へボタン
         document.getElementById('dynamicNextBtn').addEventListener('click', () => {
             goToSlide(currentDynamicIndex + 1);
+            restartDotTimer();
             restartAutoSlide();
         });
 
         document.getElementById('dynamicPrevBtn').addEventListener('click', () => {
             goToSlide(currentDynamicIndex - 1);
+            restartDotTimer();
             restartAutoSlide();
         });
 
@@ -1030,13 +1040,20 @@
             if (isPaused) {
                 // 再開
                 isPaused = false;
+
                 pauseBtn.textContent = '⏸';
                 startAutoDynamicSlide();
+                restartDotTimer();
             } else {
                 // 一時停止
                 isPaused = true;
                 pauseBtn.textContent = '▶';
                 stopAutoDynamicSlide();
+                // ★ 円の描写を止める
+                if (dotTimerAnimationId) {
+                    cancelAnimationFrame(dotTimerAnimationId);
+                    dotTimerAnimationId = null;
+                }
             }
         });
 
@@ -1055,6 +1072,7 @@
 
                 dot.addEventListener('click', () => {
                     goToSlide(i);
+                    restartDotTimer();
                     restartAutoSlide();
                 });
 
@@ -1063,12 +1081,56 @@
             updateDots();
         }
 
+        /* ============================================================
+   🟡 ドット用円形プログレス（タイマー）
+============================================================ */
+
+        let dotTimerStartTime = 0;
+        let dotTimerAnimationId = null;
+
+        function restartDotTimer() {
+            const activeDot = document.querySelector('.slider-dot.active');
+            if (!activeDot) return;
+
+            // 進行中のアニメーションがあれば停止
+            if (dotTimerAnimationId) {
+                cancelAnimationFrame(dotTimerAnimationId);
+            }
+
+            // CSS変数リセット
+            activeDot.style.setProperty("--progress", "0deg");
+
+            // スタート時刻記録
+            dotTimerStartTime = performance.now();
+
+            animateDotTimer();
+        }
+
+        function animateDotTimer(now) {
+            const activeDot = document.querySelector('.slider-dot.active');
+            if (!activeDot) return;
+
+            if (!now) now = performance.now();
+
+            const elapsed = now - dotTimerStartTime;
+            const progress = Math.min(elapsed / SLIDE_INTERVAL, 1); // 0〜1
+            const angle = 360 * progress;
+
+            activeDot.style.setProperty("--progress", angle + "deg");
+
+            if (progress < 1) {
+                dotTimerAnimationId = requestAnimationFrame(animateDotTimer);
+            }
+        }
+
+
         // ドットのアクティブ状態を更新
         function updateDots() {
             const dots = sliderDotsContainer.querySelectorAll('.slider-dot');
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentDynamicIndex);
             });
+            if (!isPaused) restartDotTimer();
         }
 
         // 指定スライドへ移動
@@ -1114,18 +1176,18 @@
             // アニメーション開始
             animateTimer();
         }
+        // 自動スライド制御（ドット円タイマー連動）
         function startAutoDynamicSlide() {
-            // 最初のスライド分のタイマーをスタート
-            restartTimerAnimation();
+            if (autoSlideId || isPaused) return;
 
-            setInterval(() => {
-                const cards = dynamicTrack.children;
-                if (!cards.length) return;
-                currentDynamicIndex = (currentDynamicIndex + 1) % cards.length;
-                updateDynamicSlide();
-                restartTimerAnimation(); // スライド切り替えごとにタイマーリセット
+            restartDotTimer(); // ★ 最初のドットの円開始
+
+            autoSlideId = setInterval(() => {
+                goToSlide(currentDynamicIndex + 1);
+                restartDotTimer(); // ★ 切り替えごとに円をリセット
             }, SLIDE_INTERVAL);
         }
+
 
 
         // 1フレームごとに呼ばれて円の描画を更新する
