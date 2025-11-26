@@ -16,7 +16,6 @@
 
 </head>
 <style>
-
     /* =========================
    Heroスライドショー
 ========================= */
@@ -443,6 +442,66 @@
     }
 
     /* =========================
+   スライダー用 ドット＆一時停止ボタン
+========================= */
+
+    .slider-controls {
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .slider-dots {
+        display: flex;
+        gap: 6px;
+    }
+
+    .slider-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ccc;
+        border: none;
+        padding: 0;
+    }
+
+    /* アクティブなスライドのドット */
+    .slider-dot.active {
+        background: #333;
+        transform: scale(1.6);
+        transition: transform 0.2s ease, background 0.2s ease;
+        /* ちょっと時間の経過感を出したいなら、下のアニメーションをオンにしてもOK
+    animation: dotProgress var(--slide-interval, 5s) linear forwards;
+    */
+    }
+
+    /* （オプション）アクティブ中ゆっくり大きくしていきたい場合用 */
+    @keyframes dotProgress {
+        from {
+            transform: scale(1.0);
+        }
+
+        to {
+            transform: scale(1.6);
+        }
+    }
+
+    /* 一時停止ボタン */
+    .slider-pause {
+        border: 1px solid #ccc;
+        background: #fff;
+        border-radius: 4px;
+        padding: 4px 6px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+
+
+
+    /* =========================
    汎用ボタン
 ========================= */
     #start-tour,
@@ -688,7 +747,17 @@
                 <button class="arrow left" id="dynamicPrevBtn">&#10094;</button>
                 <div class="news-track" id="dynamicNewsTrack"></div>
                 <button class="arrow right" id="dynamicNextBtn">&#10095;</button>
+                <!-- ここから追加：円形タイマー -->
+
+                <div class="slider-controls">
+                    <button class="slider-pause" id="sliderPauseBtn" aria-label="自動再生を一時停止">⏸</button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                </div>
+                <!-- ▲ ここまで ▲ -->
+
             </div>
+
+
         </section>
 
 
@@ -725,10 +794,18 @@
         const popupAudienceYes = document.getElementById('popupAudienceYes');
         const popupAudienceNo = document.getElementById('popupAudienceNo');
         const startTourBtn = document.getElementById('start-tour');
+        const sliderDotsContainer = document.getElementById('sliderDots');
+        const pauseBtn = document.getElementById('sliderPauseBtn');
 
         let currentDynamicIndex = 0;
         let currentStep = 1;
         let userData = { isFirst: null, isResident: null, audience: null, region: null };
+        const SLIDE_INTERVAL = 5000;
+        let timerFill;  // ←★これがないとリセットできない
+        let timerAnimationId;     // requestAnimationFrame のIDを入れておく用
+        let timerStartTime;       // タイマー開始時刻
+        let autoSlideId = null;
+        let isPaused = false;
 
         /* ============================================================
            🟢 データ定義
@@ -875,6 +952,7 @@
             const audience = audienceSelect.value;
             dynamicTrack.innerHTML = '';
             regionCardsContainer.innerHTML = '';
+            sliderDotsContainer.innerHTML = ''; // ★ドットもリセット
 
             if (region && region !== 'なし') {
                 calendarPages[region]?.forEach(garbage => {
@@ -899,8 +977,12 @@
             });
 
             currentDynamicIndex = 0;
+            createDots();       // ★ドットを作る
             updateDynamicSlide();
         }
+
+
+
 
         /* 記事スライダー制御 */
         function updateDynamicSlide() {
@@ -911,19 +993,162 @@
             const cardWidth = cards[0].offsetWidth + gap;
             dynamicTrack.style.transform = `translateX(${-currentDynamicIndex * cardWidth}px)`;
         }
-
+        // 次へ / 前へボタン
         document.getElementById('dynamicNextBtn').addEventListener('click', () => {
-            const cards = dynamicTrack.children;
-            if (!cards.length) return;
-            currentDynamicIndex = (currentDynamicIndex + 1) % cards.length;
-            updateDynamicSlide();
+            goToSlide(currentDynamicIndex + 1);
+            restartAutoSlide();
         });
+
         document.getElementById('dynamicPrevBtn').addEventListener('click', () => {
+            goToSlide(currentDynamicIndex - 1);
+            restartAutoSlide();
+        });
+
+        // 自動スライド制御
+        function startAutoDynamicSlide() {
+            if (autoSlideId || isPaused) return; // すでに動いてる or 一時停止中なら何もしない
+
+            autoSlideId = setInterval(() => {
+                goToSlide(currentDynamicIndex + 1);
+            }, SLIDE_INTERVAL);
+        }
+
+        function stopAutoDynamicSlide() {
+            if (!autoSlideId) return;
+            clearInterval(autoSlideId);
+            autoSlideId = null;
+        }
+
+        function restartAutoSlide() {
+            if (isPaused) return;
+            stopAutoDynamicSlide();
+            startAutoDynamicSlide();
+        }
+
+        // 一時停止ボタン
+        pauseBtn.addEventListener('click', () => {
+            if (isPaused) {
+                // 再開
+                isPaused = false;
+                pauseBtn.textContent = '⏸';
+                startAutoDynamicSlide();
+            } else {
+                // 一時停止
+                isPaused = true;
+                pauseBtn.textContent = '▶';
+                stopAutoDynamicSlide();
+            }
+        });
+
+
+        // ドットを生成
+        function createDots() {
+            sliderDotsContainer.innerHTML = '';
             const cards = dynamicTrack.children;
             if (!cards.length) return;
-            currentDynamicIndex = (currentDynamicIndex - 1 + cards.length) % cards.length;
+
+            for (let i = 0; i < cards.length; i++) {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.classList.add('slider-dot');
+                dot.dataset.index = i;
+
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                    restartAutoSlide();
+                });
+
+                sliderDotsContainer.appendChild(dot);
+            }
+            updateDots();
+        }
+
+        // ドットのアクティブ状態を更新
+        function updateDots() {
+            const dots = sliderDotsContainer.querySelectorAll('.slider-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentDynamicIndex);
+            });
+        }
+
+        // 指定スライドへ移動
+        function goToSlide(index) {
+            const cards = dynamicTrack.children;
+            if (!cards.length) return;
+
+            const max = cards.length;
+            currentDynamicIndex = (index + max) % max; // マイナス対応
             updateDynamicSlide();
-        });
+        }
+
+        // スライド位置を反映
+        function updateDynamicSlide() {
+            const cards = dynamicTrack.children;
+            if (!cards.length) return;
+            const style = getComputedStyle(dynamicTrack);
+            const gap = parseInt(style.gap) || 0;
+            const cardWidth = cards[0].offsetWidth + gap;
+            dynamicTrack.style.transform = `translateX(${-currentDynamicIndex * cardWidth}px)`;
+            updateDots();
+        }
+
+
+
+        /* ============================================================
+           🟢 おすすめ記事スライダー 自動スライド ＋ 円タイマー
+        ============================================================ */
+        function restartTimerAnimation() {
+            if (!timerFill) return;
+
+            // もし前のアニメーションが動いていたら止める
+            if (timerAnimationId) {
+                cancelAnimationFrame(timerAnimationId);
+            }
+
+            // スタート時刻を保存
+            timerStartTime = performance.now();
+
+            // 最初は 0度（何も塗られてない状態）
+            timerFill.style.setProperty('--progress', '0deg');
+
+            // アニメーション開始
+            animateTimer();
+        }
+        function startAutoDynamicSlide() {
+            // 最初のスライド分のタイマーをスタート
+            restartTimerAnimation();
+
+            setInterval(() => {
+                const cards = dynamicTrack.children;
+                if (!cards.length) return;
+                currentDynamicIndex = (currentDynamicIndex + 1) % cards.length;
+                updateDynamicSlide();
+                restartTimerAnimation(); // スライド切り替えごとにタイマーリセット
+            }, SLIDE_INTERVAL);
+        }
+
+
+        // 1フレームごとに呼ばれて円の描画を更新する
+        function animateTimer(now) {
+            if (!timerFill) return;
+
+            if (!now) {
+                now = performance.now();
+            }
+
+            const elapsed = now - timerStartTime;                 // 経過時間(ms)
+            const progress = Math.min(elapsed / SLIDE_INTERVAL, 1); // 0〜1
+
+            // 0 → 360度まで塗る
+            const angle = 360 * progress;
+            timerFill.style.setProperty('--progress', angle + 'deg');
+
+            // まだ終わってなければ次のフレームも更新
+            if (progress < 1) {
+                timerAnimationId = requestAnimationFrame(animateTimer);
+            }
+        }
+
 
         /* ============================================================
            🟢 Heroスライドショー
@@ -987,11 +1212,15 @@
             if (!hasVisited_index) popup.style.display = 'flex';
             if (savedRegion) regionSelect.value = savedRegion;
             if (savedAudience) audienceSelect.value = savedAudience;
+
+
             updateDynamicContent();
             initHeroSlide();
             initFontSize();
             initToggleList();
+            startAutoDynamicSlide();
         });
+
     </script>
 
 </body>
