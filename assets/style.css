@@ -37,25 +37,22 @@ body.font-large {
 }
 
 
-
-body {
-    font-size: var(--font-body);
-    margin: 0 auto;
-}
-
 h1 {
     font-size: var(--font-h1);
     margin: 0px;
+    font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 h2 {
     font-size: var(--font-h2);
     margin: 0px;
+    font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 h3 {
     font-size: var(--font-h3);
     margin: 0px;
+        font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 h4 {
@@ -80,21 +77,21 @@ button {
 :root {
     /* メインカラー */
     --color-dkgr: #175a1a;
-    --color-primary: #247627;
+    --color-primary: #27862d;
     --color-secondary: #89e38c;
     --color-palegreen: #eafff2;
-    --color-gbg: #bedfca;
+    --color-gbg: #adf1c6;
     --color-bg: #ffffff;
-    --color-text: #4b4b4b;
+    --color-text: #042511;
 
 }
 
 /* body */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    letter-spacing: 0.1em;
     align-items: center;
+    font-size: var(--font-body);
+    margin: 0 auto;
 }
 
 /* -------------------------------
@@ -108,8 +105,11 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    padding:0px 20px; 
-    left: 0; right: 0; margin: 0 ; width: auto;
+    padding: 0px 20px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: auto;
 }
 
 .box_emergency {
@@ -233,6 +233,8 @@ footer {
 
 }
 
+
+
 .info {
     padding: 30px 15px 30px 15px;
 }
@@ -243,9 +245,7 @@ footer {
 
 }
 
-.address-block {
-    margin-bottom: 15px;
-}
+
 
 .address-block p {
     margin: 5px 0;
@@ -280,13 +280,18 @@ footer {
 /* 下部固定バー */
 .bottom-bar {
     position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: #525252;
     display: flex;
     justify-content: space-around;
     align-items: center;
     z-index: 1000;
-    left: 0; right: 0; margin: 0 auto; width: 375px;
+    padding:10px;
 }
+
+
 
 .bottom-bar a.bottom-btn {
     text-decoration: none;

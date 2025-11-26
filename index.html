@@ -834,6 +834,11 @@
                 { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
                 { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
             ],
+            その他: [
+                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ],
             調べ学習: [
                 { title: "動画で知る南区", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
                 { title: "広報さっぽろ", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
@@ -875,7 +880,11 @@
                 const answer = e.target.dataset.answer;
                 switch (currentStep) {
                     case 1:
-                        if (answer === 'no') { popup.style.display = 'none'; return; }
+                        if (answer === 'no') {
+                            localStorage.setItem('hasVisited_index', 'true');
+                            popup.style.display = 'none';
+                            return;
+                        }
                         userData.isFirst = true;
                         showStep(2);
                         break;
@@ -1263,6 +1272,7 @@
         // クリック時に popup を非表示にする
         popupCloseBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                localStorage.setItem('hasVisited_index', 'true');
                 popup.style.display = 'none';
             });
         });
