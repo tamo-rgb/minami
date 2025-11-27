@@ -5,72 +5,1282 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>札幌市南区</title>
+
+    <!-- 共通フォント（他ページと統一） -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/common.js"></script>
-    <!-- Intro.js CSS -->
+
+    <!-- Intro.js CSS / JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.0.1/introjs.min.css" />
-
-    <!-- Intro.js JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.0.1/intro.min.js"></script>
+
+    <meta name="google-site-verification" content="JETLq1GyWycbhYNqeH6vKwRF3iWqubZvXpzOCon0hYU" />
 </head>
+
 <style>
-/* 右下ボタン */
-.menu-btn {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    padding: 10px 20px;
-    background: #333;
-    color: #fff;
-    border-radius: 50px;
-    border: none;
-    z-index: 3000;   /* ← これ追加：一番上に */
-}
+    body {
+        font-family: "Zen Maru Gothic", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0;
+    }
 
-/* ボトムメニュー本体 */
-.bottom-menu {
-    position: fixed;
-    left: 0;
-    bottom: -100%;
-    width: 100%;
-    background: white;
-    border-radius: 16px 16px 0 0;
-    padding: 20px;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
-    transition: bottom 0.3s ease;
-    z-index: 2000;   /* ボタンより小さい値にしておく */
-}
 
-.bottom-menu.is-open {
-    bottom: 0;
-}
+    .wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+    }
 
+    /* =========================
+       Heroスライドショー
+    ========================= */
+    .hero {
+        position: relative;
+        margin: 10px auto 12px;
+        width: 100%;
+        max-width: 900px;
+        aspect-ratio: 2/1;
+        overflow: hidden;
+        border-radius: 12px;
+        background-color: #fff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 1;
+    }
+
+    .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-slide.active {
+        opacity: 1;
+        z-index: 2;
+    }
+
+    /* =========================
+       ポップアップ（カード方式）
+    ========================= */
+    #popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+    }
+
+    .popup-content {
+        background: #fff;
+        margin: 10px;
+        padding: 0;
+        border-radius: 15px;
+        max-width: 360px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .popup-card {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        gap: 1rem;
+        position: relative;
+        animation: fadeIn 0.3s ease;
+        min-height: 340px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .popup-card.active {
+        display: flex;
+    }
+
+    .popup-content h3 {
+        font-size: var(--font-h3);
+        margin: 0 0 10px;
+    }
+
+    .popup-content select {
+        width: 100%;
+        white-space: normal;
+        word-break: break-word;
+        padding: 8px 12px;
+        font-size: var(--font-body);
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 1.4rem;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+    }
+
+    .popup-buttons {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .popup-next {
+        background: #FFD500;
+        color: #333;
+        flex-grow: 1;
+        padding: 14px 16px;
+        font-size: 1rem;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .popup-back {
+        background: #fff;
+        border: 2px solid #ccc;
+        color: #666;
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px 26px;
+        font-size: 0.95rem;
+        cursor: pointer;
+    }
+
+    .popup-underbuttons {
+        width: 100%;
+        display: flex;
+        gap: 0.7rem;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
+    /* =========================
+       お知らせ・重要ニュース
+    ========================= */
+    .important_section {
+        display: flex;
+        align-items: center;
+        background-color: #969696;
+        padding: 4px 12px;
+        margin: 0 auto 12px;
+        max-width: 900px;
+        border-radius: 8px;
+    }
+
+    .important_section .icon img {
+        width: 30px;
+        padding: 4px 6px 4px 0;
+    }
+
+    .important_news {
+        font-weight: 500;
+        color: #ffffff;
+        margin: 0;
+        font-size: var(--font-p);
+    }
+
+    /* =========================
+       Googleカスタム検索
+    ========================= */
+    .gcse-search {
+        max-width: 900px;
+        margin: 0 auto 8px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 8px 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        box-sizing: border-box;
+    }
+
+    /* =========================
+       コンテンツボックス（検索・お知らせ等）
+    ========================= */
+    #contents {
+        display: flex;
+        gap: 10px;
+        padding: 0 10px 12px;
+        max-width: 900px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .content-box {
+        flex: 1;
+        background:var(--color-primary);
+        color: #ffffff;
+        padding: 16px 10px;
+        border-radius: 10px;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        border: 1px solid #f0f2f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .content-box .icon img {
+        width: 3em;
+        object-fit: contain;
+    }
+
+    .content-box h2 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    /* =========================
+       フォーム・セレクト
+    ========================= */
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 8px 40px 8px 12px;
+        font-size: var(--font-body);
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6H0z' fill='%23333'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px 6px;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    .form-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin: 8px 10px;
+        text-align: left;
+        font-size: var(--font-p);
+    }
+
+    .form-section label {
+        font-weight: 500;
+    }
+
+    /* =========================
+       パーソナライズエリア
+    ========================= */
+    .personalize {
+        margin: 10px auto 16px;
+        background-color: var(--color-gbg);
+        padding: 8px 10px 14px;
+        max-width: 900px;
+        box-sizing: border-box;
+    }
+
+    .toggle-list {
+        margin-bottom: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        border: 1px solid #f0f2f4;
+    }
+
+    .toggle-header {
+        display: flex;
+        align-items: center;
+        padding: 12px 14px;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--color-text);
+        font-size: var(--font-h3);
+        background-color: var(--color-primary);
+        color: #fff;
+    }
+
+    .toggle-header span {
+        margin-left: auto;
+        font-size: 1.4rem;
+    }
+
+    .toggle-content {
+        display: none;
+        padding: 4px 4px 10px;
+        background: #e5ffd3;
+    }
+
+    .toggle-list.active .toggle-content {
+        display: block;
+    }
+
+    /* =========================
+       地域カード
+    ========================= */
+    .region-cards {
+        display: flex;
+        gap: 10px;
+        margin: 8px 0 10px;
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+    .region-card {
+        flex: 1;
+        min-width: 150px;
+        background: #ffffff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 8px 10px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        border: 1px solid #f0f2f4;
+    }
+
+    .region-card a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: var(--font-p);
+        font-weight: 500;
+        color: var(--color-text);
+        gap: 6px;
+    }
+
+    .region-card a img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+    }
+
+    /* =========================
+       記事カードスライダー
+    ========================= */
+    .news-slider {
+        position: relative;
+        width: 100%;
+        margin: 4px auto 0;
+        overflow: hidden;
+        background-color: #fff;
+        border-radius: 10px;
+        max-width: 900px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        border: 1px solid #f0f2f4;
+        box-sizing: border-box;
+        padding: 6px 0 10px;
+    }
+
+    .news-track,
+    #dynamicNewsTrack {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 10px;
+        padding: 4px 10px;
+        box-sizing: border-box;
+    }
+
+    .recommended-card {
+        background: #ffffff;
+        padding: 10px 12px;
+        border-radius: 8px;
+        flex: 0 0 100%;
+        box-sizing: border-box;
+        border: 1px solid var(--color-primary);
+    }
+
+    .recommended-card h4 {
+        margin: 0 0 6px;
+        font-size: 1rem;
+        color: var(--color-text);
+    }
+
+    .recommended-card p {
+        margin: 0 0 8px;
+        font-size: var(--font-p);
+    }
+
+    .recommended-card a {
+        display: inline-block;
+        margin-top: 4px;
+        padding: 8px 12px;
+        background: var(--color-primary);
+        color: #ffffff;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        float: right;
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        background: #ffffff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+    }
+
+    .arrow.left {
+        left: 6px;
+    }
+
+    .arrow.right {
+        right: 6px;
+    }
+
+    .arrow:hover {
+        background: #f0f0f0;
+    }
+
+    /* スライダー用 ドット＆一時停止ボタン */
+    .slider-controls {
+        margin-top: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .slider-dots {
+        display: flex;
+        gap: 10px;
+    }
+
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #222222;
+        border: none;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .slider-dot.active {
+        background: #eee;
+        transform: scale(1.4);
+    }
+
+    .slider-dot.active::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(#222222 0deg var(--progress, 0deg),
+                transparent var(--progress, 0deg) 360deg);
+    }
+
+    .slider-pause {
+        border: 1px solid #ccc;
+        background: #fff;
+        border-radius: 4px;
+        padding: 4px 6px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    /* =========================
+       Intro.js ツアー
+    ========================= */
+    .introjs-tooltip {
+        background-color: #ffffff;
+        border-radius: 15px;
+        width: 300px;
+        font-size: 16px;
+    }
+
+    .introjs-progress {
+        background-color: rgb(177, 177, 177);
+    }
+
+    .introjs-nextbutton {
+        background-color: #FFD500 !important;
+        border: none;
+        border-radius: 12px;
+        padding: 8px 20px;
+        font-weight: bold;
+    }
+
+    .introjs-prevbutton {
+        background-color: #ececec !important;
+        color: #333;
+        border: none;
+        border-radius: 12px;
+        padding: 8px 20px;
+        font-weight: bold;
+    }
+
+    /* =========================
+       汎用ボタン
+    ========================= */
+    #start-tour,
+    #popupSubmit {
+        padding: 12px 40px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: var(--font-button);
+        border-radius: 50px;
+        border: none;
+    }
+
+    #start-tour {
+        background: var(--color-primary);
+        color: var(--color-bg);
+    }
+
+    #popupSubmit {
+        background: #247627;
+        color: #f5f8fb;
+    }
+
+    .end {
+        text-align: center;
+        margin: 20px 0 24px;
+    }
+
+    /* =========================
+       アニメーション
+    ========================= */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* 小さめ画面での調整 */
+    @media (max-width: 600px) {
+        .hero {
+            border-radius: 0;
+        }
+
+        .content-box {
+            padding: 14px 8px;
+        }
+
+        .recommended-card {
+            padding: 10px;
+        }
+
+        .arrow {
+            display: none;
+        }
+    }
 </style>
-<div class="page-content">
-    <h1>ページのコンテンツ</h1>
-    <p>下のボタンを押すと、ボトムシートが「スーッ」と出てきます。</p>
-</div>
 
-<button id="menuToggleBtn" class="menu-btn">メニュー</button>
+<body>
+    <div class="wrapper">
 
-<div id="bottomMenu" class="bottom-menu">
-    <div class="menu-content">
-        <p>ここにメニュー項目が入ります</p>
+        <!-- スクロール進捗バー -->
+        <div id="scrollProgress"></div>
+
+        <!-- ポップアップ：カード方式 -->
+        <div id="popup" style="display:none;">
+            <div class="popup-content" id="popupCardContainer">
+                <!-- STEP 1 -->
+                <div class="popup-card active" data-step="1">
+                    <button class="popup-close">&times;</button>
+                    <h3>ガイドを利用しますか？</h3>
+                    <div class="popup-buttons">
+                        <button class="popup-next" data-answer="yes">はい</button>
+                        <button class="popup-next" data-answer="no">いいえ</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="popup-card" data-step="2">
+                    <button class="popup-close">&times;</button>
+                    <h3>あなたは<br>札幌市南区民ですか？</h3>
+                    <div class="popup-buttons">
+                        <button class="popup-next" data-answer="yes">はい</button>
+                        <button class="popup-next" data-answer="no">いいえ</button>
+                    </div>
+                    <button class="popup-back">戻る</button>
+                </div>
+
+                <!-- STEP 3（南区向け立場） -->
+                <div class="popup-card" data-step="3">
+                    <button class="popup-close">&times;</button>
+                    <h3>あなたの立場を<br>教えてください</h3>
+                    <select id="popupAudienceYes">
+                        <option value="">選択してください</option>
+                        <option value="一人暮らし">一人暮らし</option>
+                        <option value="事業者">事業者</option>
+                        <option value="子育て">子育て</option>
+                        <option value="シニア">シニア</option>
+                        <option value="その他">その他</option>
+                    </select>
+                    <div class="popup-underbuttons">
+                        <button class="popup-back">戻る</button>
+                        <button class="popup-next">次へ</button>
+                    </div>
+                </div>
+
+                <!-- STEP 4（南区以外向け立場） -->
+                <div class="popup-card" data-step="4">
+                    <button class="popup-close">&times;</button>
+                    <h3>あなたの立場を<br>教えてください</h3>
+                    <select id="popupAudienceNo">
+                        <option value="その他">その他</option>
+                        <option value="調べ学習">調べ学習</option>
+                        <option value="引っ越し検討">引っ越しを検討</option>
+                        <option value="観光">観光</option>
+                    </select>
+                    <div class="popup-underbuttons">
+                        <button class="popup-back">戻る</button>
+                        <button class="popup-next">次へ</button>
+                    </div>
+                </div>
+
+                <!-- STEP 5（南区民のみ地域選択） -->
+                <div class="popup-card" data-step="5">
+                    <button class="popup-close">&times;</button>
+                    <h3>お住まいの地域を<br>教えてください</h3>
+                    <select id="popupRegion">
+                        <option value="">選択してください</option>
+                        <option value="area_1">真駒内柏丘/東町/幸町/泉町/南町</option>
+                        <option value="area_2">石山東/常盤/滝野/芸術の森</option>
+                        <option value="area_3">藤野/白川/簾舞/砥山/豊滝/硬石山/小金湯/定山渓温泉西・東/定山渓</option>
+                        <option value="area_4">真駒内本町/容町/曙町/緑町</option>
+                        <option value="area_5">藻岩下・北ノ沢・中ノ沢/南30条～39条の西</option>
+                        <option value="area_6">南沢・石山</option>
+                        <option value="area_7">真駒内・川沿</option>
+                        <option value="area_8">澄川</option>
+                        <option value="なし">なし</option>
+                    </select>
+                    <div class="popup-underbuttons">
+                        <button class="popup-back">戻る</button>
+                        <button class="popup-next">次へ</button>
+                    </div>
+                </div>
+
+                <!-- STEP 6（ガイド開始） -->
+                <div class="popup-card" data-step="6">
+                    <button class="popup-close">&times;</button>
+                    <h3>設定が完了しました！<br>ガイドを開始します</h3>
+                    <div class="popup-underbuttons" style="justify-content:center;">
+                        <button id="popupSubmit">サイトを見る</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ヘッダー読み込み -->
+        <div id="header"></div>
+        <div class="yohaku" style="height:50px;"></div>
     </div>
-</div>
 
+    <main>
+        <!-- Heroスライドショー -->
+        <section class="hero">
+            <a href="https://www.city.sapporo.jp/minami/news/202510/20251018.html" class="hero-slide">
+                <img src="/data/photo_1.jpg" alt="画像1">
+            </a>
+            <a href="https://www.city.sapporo.jp/minami/news/202510/20251028.html" class="hero-slide">
+                <img src="/data/photo_2.JPG" alt="画像2">
+            </a>
+            <a href="https://www.city.sapporo.jp/minami/news/202510/20251020.html" class="hero-slide">
+                <img src="/data/photo_3.jpg" alt="画像3">
+            </a>
+        </section>
 
-<script>
-const bottomMenu = document.getElementById('bottomMenu');
-const toggleBtn  = document.getElementById('menuToggleBtn');
+        <!-- 重要なお知らせ -->
+        <section class="important_section" id="emergency">
+            <div class="icon">
+                <img src="data/home_2.png" alt="お知らせアイコン">
+            </div>
+            <p class="important_news">戸籍へのフリガナ記載に関する通知</p>
+        </section>
 
-toggleBtn.addEventListener('click', () => {
-    const isOpen = bottomMenu.classList.toggle('is-open');
-    toggleBtn.textContent = isOpen ? "閉じる" : "メニュー";
-});
+        <!-- Googleカスタム検索 -->
+        <script async src="https://cse.google.com/cse.js?cx=d50400fa95b444d4e"></script>
+        <div class="gcse-search"></div>
 
+        <!-- コンテンツボタン -->
+        <section id="contents">
+            <a href="search.html" class="content-box">
+                <div class="icon">
+                    <img src="data/home_1.png" alt="情報を探すアイコン">
+                </div>
+                <div class="text">
+                    <h2>情報を探す</h2>
+                </div>
+            </a>
+            <a href="news.html" class="content-box">
+                <div class="icon">
+                    <img src="data/home_2.png" alt="お知らせアイコン">
+                </div>
+                <div class="text">
+                    <h2>お知らせ</h2>
+                </div>
+            </a>
+        </section>
 
-</script>
+        <!-- パーソナライズ＋地域カード＋おすすめ記事 -->
+        <section class="personalize">
+            <div class="toggle-list">
+                <div id="tog-header" class="toggle-header">
+                    おすすめ情報を設定する<span>+</span>
+                </div>
+                <div class="toggle-content">
+                    <div class="form-section">
+                        <label for="region">お住まいの地域</label>
+                        <select id="region">
+                            <option value="なし">なし</option>
+                            <option value="area_1">真駒内柏丘/東町/幸町/泉町/南町</option>
+                            <option value="area_2">石山東/常盤/滝野/芸術の森</option>
+                            <option value="area_3">藤野/白川/簾舞/砥山/豊滝/硬石山/小金湯/定山渓温泉西・東/定山渓</option>
+                            <option value="area_4">真駒内本町/容町/曙町/緑町</option>
+                            <option value="area_5">藻岩下・北ノ沢・中ノ沢/南30条～39条の西</option>
+                            <option value="area_6">南沢・石山</option>
+                            <option value="area_7">真駒内・川沿</option>
+                            <option value="area_8">澄川</option>
+                        </select>
+                    </div>
+
+                    <div class="form-section">
+                        <label for="audience">対象者</label>
+                        <select id="audience">
+                            <option value="その他">その他</option>
+                            <option value="一般">南区区民</option>
+                            <option value="調べ学習">調べ学習</option>
+                            <option value="引っ越し検討">引っ越しを検討</option>
+                            <option value="観光">観光</option>
+                            <option value="一人暮らし">一人暮らし</option>
+                            <option value="事業者">事業者</option>
+                            <option value="子育て">子育て</option>
+                            <option value="シニア">シニア</option>
+                        </select>
+                    </div>
+
+                    <div class="form-section font-size-toggle">
+                        <label>文字サイズ</label>
+                        <div>
+                            <label><input type="radio" name="font-size" value="small"> 小</label>
+                            <label><input type="radio" name="font-size" value="medium"> 中</label>
+                            <label><input type="radio" name="font-size" value="large" checked> 大</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 地域カード（JSで追加） -->
+            <section id="regionCards" class="region-cards">
+            </section>
+
+            <!-- おすすめ記事スライダー -->
+            <div class="news-slider" id="dynamicNewsSlider">
+                <button class="arrow left" id="dynamicPrevBtn">&#10094;</button>
+                <div class="news-track" id="dynamicNewsTrack"></div>
+                <button class="arrow right" id="dynamicNextBtn">&#10095;</button>
+
+                <div class="slider-controls">
+                    <button class="slider-pause" id="sliderPauseBtn" aria-label="自動再生を一時停止">⏸</button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="end">
+            <button id="start-tour">
+                ガイド開始
+            </button>
+        </section>
+    </main>
+
+    <!-- フッター読み込み -->
+    <div id="footer"></div>
+
+    <!-- JS 読み込み（元コードベースをそのまま利用） -->
+    <script>
+        /* ============================================================
+           🟢 要素取得
+        ============================================================ */
+        const regionSelect = document.getElementById('region');
+        const audienceSelect = document.getElementById('audience');
+        const dynamicTrack = document.getElementById('dynamicNewsTrack');
+        const regionCardsContainer = document.getElementById('regionCards');
+        const popup = document.getElementById('popup');
+        const popupCards = document.querySelectorAll('.popup-card');
+        const popupSubmit = document.getElementById('popupSubmit');
+        const popupRegion = document.getElementById('popupRegion');
+        const popupAudienceYes = document.getElementById('popupAudienceYes');
+        const popupAudienceNo = document.getElementById('popupAudienceNo');
+        const startTourBtn = document.getElementById('start-tour');
+        const sliderDotsContainer = document.getElementById('sliderDots');
+        const pauseBtn = document.getElementById('sliderPauseBtn');
+
+        let currentDynamicIndex = 0;
+        let currentStep = 1;
+        let userData = { isFirst: null, isResident: null, audience: null, region: null };
+        const SLIDE_INTERVAL = 5000;
+        let autoSlideId = null;
+        let isPaused = false;
+
+        /* ドット用タイマー */
+        let dotTimerStartTime = 0;
+        let dotTimerAnimationId = null;
+
+        /* ============================================================
+           🟢 データ定義
+        ============================================================ */
+        const recommendedArticles = {
+            一般: [
+                { title: "簡単に証明書発行をするコツ", url: "#" },
+                { title: "国民健康保険料の夜間納付相談のお知らせ", url: "https://www.city.sapporo.jp/minami/hoken/yakannofusodan.html" },
+                { title: "南区役所食堂営業再開のお知らせ", url: "https://www.city.sapporo.jp/minami/oshirase/20251020shokudo.html" }
+            ],
+            一人暮らし: [
+                { title: "来庁せずにできる手続き", url: "https://www.city.sapporo.jp/minami/annai/jyuminhyoraityonashi.html" },
+                { title: "住居確保給付金について", url: "https://step-sapporo.jp/housingbenefit/?utm_source=chatgpt.com" },
+                { title: "アルバイト情報まとめ", url: "#" }
+            ],
+            事業者: [
+                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ],
+            その他: [
+                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ],
+            調べ学習: [
+                { title: "動画で知る南区", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "広報さっぽろ", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "南区の地域紹介", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ]
+        };
+
+        const calendarPages = {
+            area_1: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
+            area_2: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
+            area_3: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
+            area_4: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
+            area_5: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }]
+        };
+
+        const nearbyFacilities = {
+            area_1: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
+            area_2: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
+            area_3: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
+            area_4: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
+            area_5: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }]
+        };
+
+        /* ============================================================
+           🟢 初回訪問ポップアップ制御
+        ============================================================ */
+        const hasVisited_index = localStorage.getItem('hasVisited_index');
+        const savedRegion = localStorage.getItem('selectedRegion');
+        const savedAudience = localStorage.getItem('selectedAudience');
+
+        function showStep(step) {
+            popupCards.forEach(card => card.classList.toggle('active', Number(card.dataset.step) === step));
+            currentStep = step;
+        }
+
+        // ポップアップ「次へ」「はい」「いいえ」
+        document.querySelectorAll('.popup-next, .popup-skip').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const answer = e.target.dataset.answer;
+                switch (currentStep) {
+                    case 1:
+                        if (answer === 'no') {
+                            localStorage.setItem('hasVisited_index', 'true');
+                            popup.style.display = 'none';
+                            return;
+                        }
+                        userData.isFirst = true;
+                        showStep(2);
+                        break;
+                    case 2:
+                        userData.isResident = answer;
+                        if (answer === 'yes') showStep(3);
+                        else showStep(4);
+                        break;
+                    case 3:
+                        if (!popupAudienceYes.value) { alert("立場を選択してください"); return; }
+                        userData.audience = popupAudienceYes.value;
+                        showStep(5);
+                        break;
+                    case 4:
+                        if (!popupAudienceNo.value) { alert("立場を選択してください"); return; }
+                        userData.audience = popupAudienceNo.value;
+                        showStep(6);
+                        break;
+                    case 5:
+                        if (!popupRegion.value) { alert("地域を選択してください"); return; }
+                        userData.region = popupRegion.value;
+                        showStep(6);
+                        break;
+                }
+            });
+        });
+
+        // 戻るボタン
+        document.querySelectorAll('.popup-back').forEach(btn => {
+            btn.addEventListener('click', () => {
+                switch (currentStep) {
+                    case 2: showStep(1); break;
+                    case 3: showStep(2); break;
+                    case 4: showStep(2); break;
+                    case 5: showStep(3); break;
+                    case 6: userData.isResident === 'yes' ? showStep(5) : showStep(4); break;
+                }
+            });
+        });
+
+        // 完了ボタン
+        popupSubmit.addEventListener('click', () => {
+            if (userData.isResident === 'no') userData.region = 'なし';
+            localStorage.setItem('selectedRegion', userData.region);
+            localStorage.setItem('selectedAudience', userData.audience);
+            localStorage.setItem('hasVisited_index', 'true');
+            regionSelect.value = userData.region || 'なし';
+            audienceSelect.value = userData.audience || 'その他';
+            updateDynamicContent();
+            popup.style.display = 'none';
+            startTour();
+        });
+
+        /* 閉じるボタン（×） */
+        const popupCloseBtns = document.querySelectorAll('.popup-close');
+        popupCloseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                localStorage.setItem('hasVisited_index', 'true');
+                popup.style.display = 'none';
+            });
+        });
+
+        /* ============================================================
+           🟢 セレクト変更時：保存＋更新
+        ============================================================ */
+        regionSelect.addEventListener('change', () => {
+            localStorage.setItem('selectedRegion', regionSelect.value);
+            updateDynamicContent();
+        });
+
+        audienceSelect.addEventListener('change', () => {
+            localStorage.setItem('selectedAudience', audienceSelect.value);
+            updateDynamicContent();
+        });
+
+        /* ============================================================
+           🟢 ツアーボタン
+        ============================================================ */
+        startTourBtn.addEventListener('click', () => startTour());
+
+        function startTour() {
+            introJs().setOptions({
+                steps: [
+                    { element: '#emergency', intro: 'ここから緊急情報・重要なお知らせを確認できます。', position: 'bottom' },
+                    { element: '#tog-header', intro: 'ここでおすすめ情報をカスタマイズできます。', position: 'right' },
+                    { element: '#start-tour', intro: 'このボタンからいつでもガイドを再開できます。', position: 'top' }
+                ],
+                nextLabel: '次へ',
+                prevLabel: '戻る',
+                doneLabel: '完了',
+                showProgress: true,
+                exitOnOverlayClick: false
+            }).start();
+        }
+
+        /* ============================================================
+           🟢 動的コンテンツ更新
+        ============================================================ */
+        function updateDynamicContent() {
+            const region = regionSelect.value;
+            const audience = audienceSelect.value || 'その他';
+
+            dynamicTrack.innerHTML = '';
+            regionCardsContainer.innerHTML = '';
+            sliderDotsContainer.innerHTML = '';
+
+            // 地域カード
+            if (region && region !== 'なし') {
+                calendarPages[region]?.forEach(garbage => {
+                    const card = document.createElement('div');
+                    card.classList.add('region-card');
+                    card.innerHTML = `<a href="${garbage.url}" target="_blank"><img src="data/garbage.png" alt="アイコン">ごみ収集日</a>`;
+                    regionCardsContainer.appendChild(card);
+                });
+                nearbyFacilities[region]?.forEach(facility => {
+                    const card = document.createElement('div');
+                    card.classList.add('region-card');
+                    card.innerHTML = `<a href="${facility.url}" target="_blank"><img src="data/facility.png" alt="アイコン">近くの施設</a>`;
+                    regionCardsContainer.appendChild(card);
+                });
+            }
+
+            // 記事カード
+            (recommendedArticles[audience] || []).forEach(article => {
+                const card = document.createElement('div');
+                card.classList.add('recommended-card');
+                card.innerHTML = `
+                    <h4>${article.title}</h4>
+                    <p>記事の簡単な説明をここに入れられます。</p>
+                    <a href="${article.url}" target="_blank">詳しく見る</a>
+                `;
+                dynamicTrack.appendChild(card);
+            });
+
+            currentDynamicIndex = 0;
+            createDots();
+            updateDynamicSlide();
+        }
+
+        /* ============================================================
+           🟢 記事スライダー
+        ============================================================ */
+        function updateDynamicSlide() {
+            const cards = dynamicTrack.children;
+            if (!cards.length) return;
+
+            const style = getComputedStyle(dynamicTrack);
+            const gap = parseInt(style.gap) || 0;
+            const cardWidth = cards[0].offsetWidth + gap;
+
+            dynamicTrack.style.transform = `translateX(${-currentDynamicIndex * cardWidth}px)`;
+            updateDots();
+        }
+
+        function goToSlide(index) {
+            const cards = dynamicTrack.children;
+            if (!cards.length) return;
+
+            const max = cards.length;
+            currentDynamicIndex = (index + max) % max;
+            updateDynamicSlide();
+        }
+
+        document.getElementById('dynamicNextBtn').addEventListener('click', () => {
+            goToSlide(currentDynamicIndex + 1);
+            restartDotTimer();
+            restartAutoSlide();
+        });
+
+        document.getElementById('dynamicPrevBtn').addEventListener('click', () => {
+            goToSlide(currentDynamicIndex - 1);
+            restartDotTimer();
+            restartAutoSlide();
+        });
+
+        // ドット生成
+        function createDots() {
+            sliderDotsContainer.innerHTML = '';
+            const cards = dynamicTrack.children;
+            if (!cards.length) return;
+
+            for (let i = 0; i < cards.length; i++) {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.classList.add('slider-dot');
+                dot.dataset.index = i;
+
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                    restartDotTimer();
+                    restartAutoSlide();
+                });
+
+                sliderDotsContainer.appendChild(dot);
+            }
+            updateDots();
+        }
+
+        // ドット更新＋円タイマー
+        function updateDots() {
+            const dots = sliderDotsContainer.querySelectorAll('.slider-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentDynamicIndex);
+                if (i !== currentDynamicIndex) {
+                    dot.style.setProperty("--progress", "0deg");
+                }
+            });
+            if (!isPaused) restartDotTimer();
+        }
+
+        function restartDotTimer() {
+            const activeDot = document.querySelector('.slider-dot.active');
+            if (!activeDot) return;
+
+            if (dotTimerAnimationId) {
+                cancelAnimationFrame(dotTimerAnimationId);
+            }
+
+            activeDot.style.setProperty("--progress", "0deg");
+            dotTimerStartTime = performance.now();
+            animateDotTimer();
+        }
+
+        function animateDotTimer(now) {
+            const activeDot = document.querySelector('.slider-dot.active');
+            if (!activeDot) return;
+
+            if (!now) now = performance.now();
+
+            const elapsed = now - dotTimerStartTime;
+            const progress = Math.min(elapsed / SLIDE_INTERVAL, 1);
+            const angle = 360 * progress;
+
+            activeDot.style.setProperty("--progress", angle + "deg");
+
+            if (progress < 1) {
+                dotTimerAnimationId = requestAnimationFrame(animateDotTimer);
+            }
+        }
+
+        // 自動スライド
+        function startAutoDynamicSlide() {
+            if (autoSlideId || isPaused) return;
+            restartDotTimer();
+            autoSlideId = setInterval(() => {
+                goToSlide(currentDynamicIndex + 1);
+                restartDotTimer();
+            }, SLIDE_INTERVAL);
+        }
+
+        function stopAutoDynamicSlide() {
+            if (!autoSlideId) return;
+            clearInterval(autoSlideId);
+            autoSlideId = null;
+        }
+
+        function restartAutoSlide() {
+            if (isPaused) return;
+            stopAutoDynamicSlide();
+            startAutoDynamicSlide();
+        }
+
+        // 一時停止ボタン
+        pauseBtn.addEventListener('click', () => {
+            if (isPaused) {
+                isPaused = false;
+                pauseBtn.textContent = '⏸';
+                startAutoDynamicSlide();
+                restartDotTimer();
+            } else {
+                isPaused = true;
+                pauseBtn.textContent = '▶';
+                stopAutoDynamicSlide();
+                if (dotTimerAnimationId) {
+                    cancelAnimationFrame(dotTimerAnimationId);
+                    dotTimerAnimationId = null;
+                }
+            }
+        });
+
+        /* ============================================================
+           🟢 Heroスライドショー
+        ============================================================ */
+        function initHeroSlide() {
+            const slides = document.querySelectorAll('.hero-slide');
+            if (!slides.length) return;
+            let currentSlide = 0;
+            const interval = 7000;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+            }
+
+            showSlide(currentSlide);
+
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }, interval);
+        }
+
+        /* ============================================================
+           🟢 文字サイズ切替
+        ============================================================ */
+        function initFontSize() {
+            const fontSizeRadios = document.querySelectorAll('input[name="font-size"]');
+            const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+
+            applyFontSize(savedFontSize);
+
+            fontSizeRadios.forEach(radio => {
+                radio.checked = radio.value === savedFontSize;
+                radio.addEventListener('change', () => applyFontSize(radio.value));
+            });
+
+            function applyFontSize(size) {
+                document.body.classList.remove('font-small', 'font-medium', 'font-large');
+                if (size === 'small') document.body.classList.add('font-small');
+                if (size === 'medium') document.body.classList.add('font-medium');
+                if (size === 'large') document.body.classList.add('font-large');
+                localStorage.setItem('fontSize', size);
+            }
+        }
+
+        /* ============================================================
+           🟢 トグルリスト
+        ============================================================ */
+        function initToggleList() {
+            document.querySelectorAll('.toggle-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const parent = header.parentElement;
+                    parent.classList.toggle('active');
+                    header.querySelector('span').textContent =
+                        parent.classList.contains('active') ? '−' : '+';
+                });
+            });
+        }
+
+        /* ============================================================
+           🟢 ページ初期化
+        ============================================================ */
+        window.addEventListener('load', () => {
+            if (!hasVisited_index) popup.style.display = 'flex';
+
+            if (savedRegion) regionSelect.value = savedRegion;
+            if (savedAudience) audienceSelect.value = savedAudience;
+
+            updateDynamicContent();
+            initHeroSlide();
+            initFontSize();
+            initToggleList();
+            startAutoDynamicSlide();
+        });
+    </script>
 </body>
 
 </html>
