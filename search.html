@@ -20,11 +20,13 @@
 <style>
   body {
     background-color: #e1f8cf;
+    font-family: 'Zen Maru Gothic', sans-serif;
   }
 
   .breadcrumb {
     padding: 10px;
     color: #555;
+    background-color: #ffffff;
     margin-bottom: 10px;
   }
 
@@ -140,45 +142,48 @@
     gap: 10px;
     padding-bottom: 5px;
   }
-.QAF{
-  text-align: center;
-}
+
+  .QAF {
+    text-align: center;
+  }
 
 
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;   /* はみ出したら折り返し */
-  gap: 8px;          /* ボタン同士のすき間 */
-  margin: 10px 10px 20px;
-}
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* はみ出したら折り返し */
+    gap: 8px;
+    /* ボタン同士のすき間 */
+    margin: 10px 10px 20px;
+  }
 
-.tag-btn {
-  display: inline-block;
-  padding: 6px 14px;
-  margin:5px;
-  border-radius: 999px;              /* まん丸のピル型 */
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-  font-size: var(--font-p);
-  text-decoration: none;
-  border: 1px solid rgba(0,0,0,0.05);
-  transition: background-color 0.2s ease, 
-              transform 0.1s ease, 
-              box-shadow 0.1s ease;
-}
+  .tag-btn {
+    display: inline-block;
+    padding: 6px 14px;
+    margin: 5px;
+    border-radius: 999px;
+    /* まん丸のピル型 */
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    font-size: var(--font-p);
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease,
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+  }
 
-.tag-btn:hover {
-  background-color: #2f8a3e;        /* 濃いめの緑など、お好みで */
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
+  .tag-btn:hover {
+    background-color: #2f8a3e;
+    /* 濃いめの緑など、お好みで */
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
 
-.tag-btn:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-
-
+  .tag-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
 </style>
 
 <body>
@@ -195,8 +200,7 @@
   <!-- ヘッダー読み込み -->
   <div id="header"></div>
 
-    <div class="yohaku" style="height:60px;"
-></div>
+  <div class="yohaku" style="height:60px;"></div>
 
   <main>
     <!-- パンくずリスト -->
@@ -235,7 +239,7 @@
             <p>健康診断/介護/医療</p>
           </a>
 
-          <a href="search/search_comfort.html" class="card">
+          <a href="search/search_town.html" class="card">
             <div class="card-icon">
               <img src="data/4.png" alt="健康アイコン">
               <h3>環境・施設</h3>
@@ -243,7 +247,7 @@
             <p>施設/公園設備<br>雪対策/道路整備</p>
           </a>
 
-          <a href="search/search_health.html" class="card">
+          <a href="search/search_event.html" class="card">
             <div class="card-icon">
               <img src="data/5.png" alt="手続きアイコン">
               <h3>文化・行事</h3>
@@ -251,7 +255,7 @@
             <p>観光地/地域イベント</p>
           </a>
 
-          <a href="search/search_comfort.html" class="card">
+          <a href="search/search_public.html" class="card">
             <div class="card-icon">
               <img src="data/6.png" alt="健康アイコン">
               <h3>まちづくり</h3>

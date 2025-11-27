@@ -80,7 +80,7 @@ button {
     --color-primary: #27862d;
     --color-secondary: #89e38c;
     --color-palegreen: #eafff2;
-    --color-gbg: #adf1c6;
+    --color-gbg: #e1f8cf;
     --color-bg: #ffffff;
     --color-text: #2b2b2b;
 
@@ -92,6 +92,7 @@ body {
     align-items: center;
     font-size: var(--font-body);
     margin: 0 auto;
+    font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 /* -------------------------------
@@ -231,7 +232,7 @@ header {
 /* footer */
 footer {
     background-color: var(--color-dkgr);
-    color: var(--color-bg);
+    color: #ffffff;
 
     .font-medium {
         font-size: var(--font-h4);
