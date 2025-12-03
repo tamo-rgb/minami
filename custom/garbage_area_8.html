@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ごみ収集日（南区）</title>
+    <title>南区1</title>
 
     <!-- フォント -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
@@ -46,8 +46,8 @@
 
         /* ページ上部タイトル部分 */
         .top-contents {
-            margin: 20px 10px 0px 10px;
-            padding: 10px 15px;
+            margin: 0px 0px 0px 0px;
+            padding: 10px 20px;
             background-color: #fff;
             border-bottom: 2px solid #2e8b57;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -142,6 +142,50 @@
         a.pdf-link:hover {
             opacity: 0.85;
         }
+
+                /* ===== 追記事項・関連情報カード ===== */
+        .add-section {
+            margin: 12px 15px 20px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .add-section h3 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+        }
+
+        .add-section ul {
+            padding-left: 20px;
+            margin: 4px 0 10px;
+        }
+
+        .add-section li {
+            font-size: var(--font-p);
+        }
+
+        .add-section a.content-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0 0;
+            padding: 10px 16px;
+            border:1px solid var(--color-primary);
+            background-color: var(--color-palegreen);
+            
+            border-radius: 25px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .add-section a.content-box:hover {
+            background-color: #f7fff0;
+        }
+
     </style>
 </head>
 
@@ -157,19 +201,16 @@
         <!-- ページタイトル＋説明 -->
         <section class="top-contents">
             <h1 class="midashi">ごみ収集日（南区）</h1>
-            <p>札幌市南区の地域ごとのごみ収集カレンダーです。お住まいの住所に対応するカレンダー番号を確認してください。</p>
+            <p>澄川地区は2区に分かれています</p>
         </section>
 
         <!-- 目次ボタン -->
         <div class="toc">
             <ul>
                 <li><a href="#section-1">南区1</a></li>
-                <li><a href="#section-2">南区2</a></li>
-                <li><a href="#section-3">南区3</a></li>
                 <li><a href="#section-4">南区4</a></li>
-                <li><a href="#section-5">南区5</a></li>
-                <li><a href="#section-6">南区6</a></li>
-                <li><a href="#section-7">南区7</a></li>
+                <li><a href="#section-4">ごみの分別</a></li>
+                <li><a href="#section-4">資源物の無料回収</a></li>
             </ul>
         </div>
 
@@ -191,61 +232,17 @@
             </div>
         </div>
 
-        <!-- 南区2 -->
-        <div id="section-2" class="section">
-            <h3>南区2</h3>
-            <div class="contents">
-                <ul>
-                    <li>石山</li>
-                    <li>常盤</li>
-                    <li>滝野</li>
-                </ul>
-                <p>下のPDFより確認できます</p>
-                <a href="https://www.city.sapporo.jp/seiso/kaisyu/08_minami/documents/07minami2_07090809.pdf"
-                    class="pdf-link">通年版（PDF：1,440KB）</a><br>
-                <a href="https://www.city.sapporo.jp/seiso/kaisyu/08_minami/documents/07minami2f_07090802.pdf"
-                    class="pdf-link">外国語版 前期（PDF：2,102KB）</a><br>
-                <a href="https://www.city.sapporo.jp/seiso/kaisyu/08_minami/documents/07minami2f_08030809.pdf"
-                    class="pdf-link">外国語版 後期（PDF：1,419KB）</a><br>
-                <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
-            </div>
-        </div>
-
-        <!-- 南区3 -->
-        <div id="section-3" class="section">
-            <h3>南区3</h3>
-            <div class="contents">
-                <ul>
-                    <li>簾舞</li>
-                    <li>藤野</li>
-                    <li>白川</li>
-                    <li>砥山</li>
-                    <li>豊滝</li>
-                    <li>硬石山</li>
-                    <li>小金湯</li>
-                    <li>定山渓温泉西・東</li>
-                    <li>定山渓</li>
-                </ul>
-                <p>下のPDFより確認できます</p>
-                <a href="#" class="pdf-link">通年版（PDF：1,460KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 前期（PDF：2,105KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 後期（PDF：1,423KB）</a><br>
-                <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
-            </div>
-        </div>
-
         <!-- 南区4 -->
         <div id="section-4" class="section">
             <h3>南区4</h3>
             <div class="contents">
                 <ul>
                     <li>澄川1条1〜4丁目</li>
-                    <li>澄川2〜6条の一部</li>
-                    <li>真駒内本町</li>
-                    <li>曙町</li>
-                    <li>上町</li>
-                    <li>緑町</li>
-                    <li>自衛隊真駒内駐屯地</li>
+                    <li>澄川2条1丁目～3丁目・4丁目（1番～11番）</li>
+                    <li>澄川3条1丁目～3丁目・4丁目（1番～6番）</li>
+                    <li>澄川4条1丁目～3丁目・4丁目（1番1号～17号）</li>
+                    <li>澄川5条5丁目（9番1～5、10番～19番）・6丁目（9番～14番）</li>
+                    <li>澄川6条3丁目～6丁目</li>
                 </ul>
                 <p>下のPDFより確認できます</p>
                 <a href="#" class="pdf-link">通年版（PDF：1,453KB）</a><br>
@@ -254,61 +251,21 @@
                 <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
             </div>
         </div>
-
-        <!-- 南区5 -->
-        <div id="section-5" class="section">
-            <h3>南区5</h3>
-            <div class="contents">
-                <ul>
-                    <li>南30条〜39条の西○丁目</li>
-                    <li>藻岩下</li>
-                    <li>川沿1条〜6条</li>
-                    <li>北ノ沢</li>
-                    <li>中ノ沢</li>
-                </ul>
-                <p>下のPDFより確認できます</p>
-                <a href="#" class="pdf-link">通年版（PDF：1,452KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 前期（PDF：2,095KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 後期（PDF：1,423KB）</a><br>
-                <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
-            </div>
+        <!-- 関連情報カード -->
+        <div class="add-section">
+            <h3>関連情報</h3>
+            <ul>
+                <li>住民票の記載内容について</li>
+            </ul>
+            <a href="search.html" class="content-box">
+                よくある質問を見る
+            </a>
         </div>
-
-        <!-- 南区6 -->
-        <div id="section-6" class="section">
-            <h3>南区6</h3>
-            <div class="contents">
-                <ul>
-                    <li>南沢（1条3丁目1番5〜14、20番、21番を除く）</li>
-                </ul>
-                <p>下のPDFより確認できます</p>
-                <a href="#" class="pdf-link">通年版（PDF：1,451KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 前期（PDF：2,092KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 後期（PDF：1,422KB）</a><br>
-                <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
-            </div>
-        </div>
-
-        <!-- 南区7 -->
-        <div id="section-7" class="section">
-            <h3>南区7</h3>
-            <div class="contents">
-                <ul>
-                    <li>川沿7条〜18条</li>
-                    <li>南沢（1条3丁目1番5〜14・20番・21番）</li>
-                    <li>石山</li>
-                </ul>
-                <p>下のPDFより確認できます</p>
-                <a href="#" class="pdf-link">通年版（PDF：1,450KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 前期（PDF：2,095KB）</a><br>
-                <a href="#" class="pdf-link">外国語版 後期（PDF：1,422KB）</a><br>
-                <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
-            </div>
-        </div>
-
-    </main>
+ 
+    
 
     <div id="footer"></div>
+    </main>
 </div>
 </body>
 

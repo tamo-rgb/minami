@@ -1021,17 +1021,32 @@
            🟢 データ定義
         ============================================================ */
         const recommendedArticles = {
-            一般: [
+            その他: [
                 { title: "簡単に証明書発行をするコツ", url: "#" },
                 { title: "国民健康保険料の夜間納付相談のお知らせ", url: "https://www.city.sapporo.jp/minami/hoken/yakannofusodan.html" },
                 { title: "南区役所食堂営業再開のお知らせ", url: "https://www.city.sapporo.jp/minami/oshirase/20251020shokudo.html" }
             ],
-            一人暮らし: [
+            南区区民: [
                 { title: "来庁せずにできる手続き", url: "https://www.city.sapporo.jp/minami/annai/jyuminhyoraityonashi.html" },
                 { title: "住居確保給付金について", url: "https://step-sapporo.jp/housingbenefit/?utm_source=chatgpt.com" },
                 { title: "アルバイト情報まとめ", url: "#" }
             ],
             事業者: [
+                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ],
+            一人暮らし: [
+                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ],
+            その他: [
+                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ],
+            その他: [
                 { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
                 { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
                 { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
@@ -1042,18 +1057,21 @@
                 { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
             ],
             調べ学習: [
-                { title: "動画で知る南区", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "動画で知る南区",text: "南区は自然が豊かなまち", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
                 { title: "広報さっぽろ", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
                 { title: "南区の地域紹介", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
             ]
         };
 
         const calendarPages = {
-            area_1: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
-            area_2: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
-            area_3: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
-            area_4: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }],
-            area_5: [{ name: "ごみ収集日", url: "facility_sumikawa_library.html" }]
+            area_1: [{ name: "ごみ収集日", url: "custom/garbage_area_1.html" }],
+            area_2: [{ name: "ごみ収集日", url: "custom/garbage_area_2.html" }],
+            area_3: [{ name: "ごみ収集日", url: "custom/garbage_area_3.html" }],
+            area_4: [{ name: "ごみ収集日", url: "custom/garbage_area_4.html" }],
+            area_5: [{ name: "ごみ収集日", url: "custom/garbage_area_5.html" }],
+            area_6: [{ name: "ごみ収集日", url: "custom/garbage_area_6.html" }],
+            area_7: [{ name: "ごみ収集日", url: "custom/garbage_area_7.html" }],
+            area_8: [{ name: "ごみ収集日", url: "custom/garbage_area_8.html" }]
         };
 
         const nearbyFacilities = {
@@ -1061,7 +1079,10 @@
             area_2: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
             area_3: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
             area_4: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
-            area_5: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }]
+            area_5: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
+            area_6: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
+            area_7: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }],
+            area_8: [{ name: "近くの施設", url: "facility_sumikawa_library.html" }]
         };
 
         /* ============================================================
@@ -1215,7 +1236,7 @@
                 card.classList.add('recommended-card');
                 card.innerHTML = `
                     <h4>${article.title}</h4>
-                    <p>記事の簡単な説明をここに入れられます。</p>
+                    <p>${article.text}</p>
                     <a href="${article.url}" target="_blank">詳しく見る</a>
                 `;
                 dynamicTrack.appendChild(card);
