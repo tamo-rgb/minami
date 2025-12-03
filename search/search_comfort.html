@@ -13,7 +13,7 @@
 </head>
 <style>
     body {
-        background-color: var(--color-gbg);
+        background-color: var(--color-);
         font-family: 'Zen Maru Gothic', sans-serif;
     }
 
@@ -40,8 +40,8 @@
     }
 
     .section {
-        padding: 10px;
-        margin: 15px;
+        padding: 25px;
+        background-color: var(--color-gbg);
     }
 
     /* ==== リストアイテム（カード枠） ==== */
@@ -194,6 +194,7 @@
 </style>
 
 <body>
+    <div class="wrapper">
     <!-- スクロール進捗バー -->
     <div id="scrollProgress"></div>
 
@@ -525,7 +526,7 @@
 
         <!-- フッター読み込み -->
         <div id="footer"></div>
-
+</div>
         <script>
             // タブ切り替え（必要ならそのまま）
             const cardTabs = document.querySelectorAll('.tab-card .tab-button');

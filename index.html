@@ -27,11 +27,6 @@
     }
 
 
-    .wrapper {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
     /* =========================
        Heroスライドショー
     ========================= */
@@ -42,7 +37,6 @@
         max-width: 900px;
         aspect-ratio: 2/1;
         overflow: hidden;
-        border-radius: 12px;
         background-color: #fff;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
@@ -431,7 +425,7 @@
 
     .arrow {
         position: absolute;
-        top: 50%;
+        top: 90%;
         transform: translateY(-50%);
         border: none;
         cursor: pointer;
@@ -565,7 +559,8 @@
         text-align: center;
         margin: 20px 0 24px;
     }
-    .font-size-bottom{
+
+    .font-size-bottom {
         text-align: center;
     }
 
@@ -836,163 +831,162 @@
         <!-- ヘッダー読み込み -->
         <div id="header"></div>
         <div class="yohaku" style="height:50px;"></div>
-    </div>
 
-    <main>
-        <!-- Heroスライドショー -->
-        <section class="hero">
-            <a href="https://www.city.sapporo.jp/minami/news/202510/20251018.html" class="hero-slide">
-                <img src="/data/photo_1.jpg" alt="画像1">
-            </a>
-            <a href="https://www.city.sapporo.jp/minami/news/202510/20251028.html" class="hero-slide">
-                <img src="/data/photo_2.JPG" alt="画像2">
-            </a>
-            <a href="https://www.city.sapporo.jp/minami/news/202510/20251020.html" class="hero-slide">
-                <img src="/data/photo_3.jpg" alt="画像3">
-            </a>
-        </section>
 
-        <!-- 重要なお知らせ -->
-        <section class="important_section" id="emergency">
-            <div class="icon">
-                <img src="data/home_2.png" alt="お知らせアイコン">
-            </div>
-            <p class="important_news">インフルエンザ流行警報が発令されました</p>
-        </section>
+        <main>
+            <!-- Heroスライドショー -->
+            <section class="hero">
+                <a href="https://www.city.sapporo.jp/minami/news/202510/20251018.html" class="hero-slide">
+                    <img src="/data/photo_1.jpg" alt="画像1">
+                </a>
+                <a href="https://www.city.sapporo.jp/minami/news/202510/20251028.html" class="hero-slide">
+                    <img src="/data/photo_2.JPG" alt="画像2">
+                </a>
+                <a href="https://www.city.sapporo.jp/minami/news/202510/20251020.html" class="hero-slide">
+                    <img src="/data/photo_3.jpg" alt="画像3">
+                </a>
+            </section>
 
-        <!-- Googleカスタム検索 -->
-        <script async src="https://cse.google.com/cse.js?cx=d50400fa95b444d4e"></script>
-        <div class="gcse-search"></div>
-
-        <!-- コンテンツボタン -->
-        <section id="contents">
-            <a href="search.html" class="content-box">
-                <div class="icon">
-                    <img src="data/home_1.png" alt="情報を探すアイコン">
-                </div>
-                <div class="text">
-                    <h2>情報を探す</h2>
-                </div>
-            </a>
-            <a href="news.html" class="content-box">
+            <!-- 重要なお知らせ -->
+            <section class="important_section" id="emergency">
                 <div class="icon">
                     <img src="data/home_2.png" alt="お知らせアイコン">
                 </div>
-                <div class="text">
-                    <h2>お知らせ</h2>
-                </div>
-            </a>
-        </section>
+                <p class="important_news">インフルエンザ流行警報が発令されました</p>
+            </section>
 
-        <!-- パーソナライズ＋地域カード＋おすすめ記事 -->
-        <section class="personalize">
-            <div class="toggle-list">
-                <div id="tog-header" class="toggle-header">
-                    おすすめ情報を設定する<span>+</span>
-                </div>
-                <div class="toggle-content">
-                    <div class="form-section">
-                        <label for="region">お住まいの地域</label>
-                        <select id="region">
-                            <option value="なし">なし</option>
-                            <option value="area_1">真駒内柏丘/東町/幸町/泉町/南町</option>
-                            <option value="area_2">石山東/常盤/滝野/芸術の森</option>
-                            <option value="area_3">藤野/白川/簾舞/砥山/豊滝/硬石山/小金湯/定山渓温泉西・東/定山渓</option>
-                            <option value="area_4">真駒内本町/容町/曙町/緑町</option>
-                            <option value="area_5">藻岩下・北ノ沢・中ノ沢/南30条～39条の西</option>
-                            <option value="area_6">南沢・石山</option>
-                            <option value="area_7">真駒内・川沿</option>
-                            <option value="area_8">澄川</option>
-                        </select>
+            <!-- Googleカスタム検索 -->
+            <script async src="https://cse.google.com/cse.js?cx=d50400fa95b444d4e"></script>
+            <div class="gcse-search"></div>
+
+            <!-- コンテンツボタン -->
+            <section id="contents">
+                <a href="search.html" class="content-box">
+                    <div class="icon">
+                        <img src="data/home_1.png" alt="情報を探すアイコン">
                     </div>
-
-                    <div class="form-section">
-                        <label for="audience">対象者</label>
-                        <select id="audience">
-                            <option value="その他">その他</option>
-                            <option value="一般">南区区民</option>
-                            <option value="調べ学習">調べ学習</option>
-                            <option value="引っ越し検討">引っ越しを検討</option>
-                            <option value="観光">観光</option>
-                            <option value="一人暮らし">一人暮らし</option>
-                            <option value="事業者">事業者</option>
-                            <option value="子育て">子育て</option>
-                            <option value="シニア">シニア</option>
-                        </select>
+                    <div class="text">
+                        <h2>情報を探す</h2>
                     </div>
+                </a>
+                <a href="news.html" class="content-box">
+                    <div class="icon">
+                        <img src="data/home_2.png" alt="お知らせアイコン">
+                    </div>
+                    <div class="text">
+                        <h2>お知らせ</h2>
+                    </div>
+                </a>
+            </section>
 
-                    <div class="form-section font-size-toggle">
-                        <label>文字サイズ</label>
-                        <div class="font-size-bottom">
-                            <label><input type="radio" name="font-size" value="small"> 小</label>
-                            <label><input type="radio" name="font-size" value="medium"> 中</label>
-                            <label><input type="radio" name="font-size" value="large" checked> 大</label>
+            <!-- パーソナライズ＋地域カード＋おすすめ記事 -->
+            <section class="personalize">
+                <div class="toggle-list">
+                    <div id="tog-header" class="toggle-header">
+                        おすすめ情報を設定する<span>+</span>
+                    </div>
+                    <div class="toggle-content">
+                        <div class="form-section">
+                            <label for="region">お住まいの地域</label>
+                            <select id="region">
+                                <option value="なし">なし</option>
+                                <option value="area_1">真駒内柏丘/東町/幸町/泉町/南町</option>
+                                <option value="area_2">石山東/常盤/滝野/芸術の森</option>
+                                <option value="area_3">藤野/白川/簾舞/砥山/豊滝/硬石山/小金湯/定山渓温泉西・東/定山渓</option>
+                                <option value="area_4">真駒内本町/容町/曙町/緑町</option>
+                                <option value="area_5">藻岩下・北ノ沢・中ノ沢/南30条～39条の西</option>
+                                <option value="area_6">南沢・石山</option>
+                                <option value="area_7">真駒内・川沿</option>
+                                <option value="area_8">澄川</option>
+                            </select>
+                        </div>
+
+                        <div class="form-section">
+                            <label for="audience">対象者</label>
+                            <select id="audience">
+                                <option value="その他">その他</option>
+                                <option value="一般">南区区民</option>
+                                <option value="調べ学習">調べ学習</option>
+                                <option value="引っ越し検討">引っ越しを検討</option>
+                                <option value="観光">観光</option>
+                                <option value="一人暮らし">一人暮らし</option>
+                                <option value="事業者">事業者</option>
+                                <option value="子育て">子育て</option>
+                                <option value="シニア">シニア</option>
+                            </select>
+                        </div>
+
+                        <div class="form-section font-size-toggle">
+                            <label>文字サイズ</label>
+                            <div class="font-size-bottom">
+                                <label><input type="radio" name="font-size" value="small"> 小</label>
+                                <label><input type="radio" name="font-size" value="medium"> 中</label>
+                                <label><input type="radio" name="font-size" value="large" checked> 大</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 地域カード（JSで追加） -->
-            <section id="regionCards" class="region-cards">
+                <!-- 地域カード（JSで追加） -->
+                <section id="regionCards" class="region-cards">
+                </section>
+
+                <!-- おすすめ記事スライダー -->
+                <div class="news-slider" id="dynamicNewsSlider">
+                    <button class="arrow left" id="dynamicPrevBtn">&#10094;</button>
+                    <div class="news-track" id="dynamicNewsTrack"></div>
+                    <button class="arrow right" id="dynamicNextBtn">&#10095;</button>
+
+                    <div class="slider-controls">
+                        <button class="slider-pause" id="sliderPauseBtn" aria-label="自動再生を一時停止">⏸</button>
+                        <div class="slider-dots" id="sliderDots"></div>
+                    </div>
+                </div>
             </section>
 
-            <!-- おすすめ記事スライダー -->
-            <div class="news-slider" id="dynamicNewsSlider">
-                <button class="arrow left" id="dynamicPrevBtn">&#10094;</button>
-                <div class="news-track" id="dynamicNewsTrack"></div>
-                <button class="arrow right" id="dynamicNextBtn">&#10095;</button>
+            <section class="section_1" id="s_1">
+                <h3 class="padding-bottom:5px;">よく利用される情報</h3>
+                <div class="grid">
 
-                <div class="slider-controls">
-                    <button class="slider-pause" id="sliderPauseBtn" aria-label="自動再生を一時停止">⏸</button>
-                    <div class="slider-dots" id="sliderDots"></div>
+                    <a href="/uncompleted.html" class="card">
+                        <p>区役所案内</p>
+                    </a>
+
+                    <a href="/uncompleted.html" class="card">
+                        <p>救急当番医療機関</p>
+                    </a>
+
+                    <a href="/uncompleted.html" class="card">
+                        <p>家庭ごみ</p>
+                    </a>
+
+                    <a href="/uncompleted.html" class="card">
+                        <p>防災・安全</p>
+                    </a>
+
+                    <a href="/uncompleted.html" class="card">
+                        <p>窓口<br>呼び出し状況</p>
+                    </a>
+
+                    <a href="/uncompleted.html" class="card">
+                        <p>来庁せずに<br>できる手続き</p>
+                    </a>
+
                 </div>
-            </div>
-        </section>
 
-        <section class="section_1" id="s_1">
-            <h3 class="padding-bottom:5px;">よく利用される情報</h3>
-            <div class="grid">
+            </section>
 
-                <a href="/uncompleted.html" class="card">
-                    <p>区役所案内</p>
-                </a>
+            <section class="end">
+                <button id="start-tour">
+                    ガイド開始
+                </button>
+            </section>
 
-                <a href="/uncompleted.html" class="card">
-                    <p>救急当番医療機関</p>
-                </a>
+        </main>
 
-                <a href="/uncompleted.html" class="card">
-                    <p>家庭ごみ</p>
-                </a>
-
-                <a href="/uncompleted.html" class="card">
-                    <p>防災・安全</p>
-                </a>
-
-                <a href="/uncompleted.html" class="card">
-                    <p>窓口<br>呼び出し状況</p>
-                </a>
-
-                <a href="/uncompleted.html" class="card">
-                    <p>来庁せずに<br>できる手続き</p>
-                </a>
-
-            </div>
-
-            </div>
-        </section>
-
-        <section class="end">
-            <button id="start-tour">
-                ガイド開始
-            </button>
-        </section>
-
-    </main>
-
-    <!-- フッター読み込み -->
-    <div id="footer"></div>
-
+        <!-- フッター読み込み -->
+        <div id="footer"></div>
+    </div>
     <!-- JS 読み込み（元コードベースをそのまま利用） -->
     <script>
         /* ============================================================
