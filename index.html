@@ -905,7 +905,7 @@
                             <label for="audience">対象者</label>
                             <select id="audience">
                                 <option value="その他">その他</option>
-                                <option value="一般">南区区民</option>
+                                <option value="南区区民">南区区民</option>
                                 <option value="調べ学習">調べ学習</option>
                                 <option value="引っ越し検討">引っ越しを検討</option>
                                 <option value="観光">観光</option>
@@ -1021,45 +1021,54 @@
            🟢 データ定義
         ============================================================ */
         const recommendedArticles = {
-            その他: [
-                { title: "簡単に証明書発行をするコツ", url: "#" },
-                { title: "国民健康保険料の夜間納付相談のお知らせ", url: "https://www.city.sapporo.jp/minami/hoken/yakannofusodan.html" },
-                { title: "南区役所食堂営業再開のお知らせ", url: "https://www.city.sapporo.jp/minami/oshirase/20251020shokudo.html" }
+            一人暮らし: [
+                { title: "簡単に証明書発行をするコツ", "text": "住民票や各種証明書をスムーズに取得するためのポイントを紹介します。", url: "#" },
+                { title: "国民健康保険料の夜間納付相談のお知らせ", "text": "平日昼間に来庁できない方のための夜間相談窓口についてのお知らせです。", url: "https://www.city.sapporo.jp/minami/hoken/yakannofusodan.html" },
+                { title: "南区役所食堂営業再開のお知らせ", "text": "利用者に人気の区役所食堂が営業を再開。新メニュー情報も掲載しています。", url: "https://www.city.sapporo.jp/minami/oshirase/20251020shokudo.html" }
             ],
             南区区民: [
-                { title: "来庁せずにできる手続き", url: "https://www.city.sapporo.jp/minami/annai/jyuminhyoraityonashi.html" },
-                { title: "住居確保給付金について", url: "https://step-sapporo.jp/housingbenefit/?utm_source=chatgpt.com" },
-                { title: "アルバイト情報まとめ", url: "#" }
+                { title: "来庁せずにできる手続き", text: "オンラインや郵送でできる便利な行政手続きをまとめています。", url: "https://www.city.sapporo.jp/minami/annai/jyuminhyoraityonashi.html" },
+                { title: "住居確保給付金について", text: "家賃の支援が受けられる住居確保給付金の条件と申請方法を解説します。", url: "https://step-sapporo.jp/housingbenefit/?utm_source=chatgpt.com" },
+                { title: "アルバイト情報まとめ", text: "南区周辺で働きたい方向けに、求人傾向や探し方をまとめました。", url: "#" }
             ],
             事業者: [
-                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
-                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
-                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
-            ],
-            一人暮らし: [
-                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
-                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
-                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
-            ],
-            その他: [
-                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
-                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
-                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
-            ],
-            その他: [
-                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
-                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
-                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
-            ],
-            その他: [
-                { title: "企業DX推進に向けた支援", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
-                { title: "中小企業への融資・支援", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
-                { title: "事業所から出るごみ", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+                { title: "企業DX推進に向けた支援", text: "デジタル化に取り組む企業向けの支援制度や相談窓口を紹介します。", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", text: "中小企業が活用できる融資制度や補助金情報をまとめました。", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", text: "事業系ごみの出し方やルールをわかりやすく解説しています。", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
             ],
             調べ学習: [
-                { title: "動画で知る南区",text: "南区は自然が豊かなまち", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
-                { title: "広報さっぽろ", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
-                { title: "南区の地域紹介", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+                {title: "札幌市南区ってどんなまち？",text: "南区の位置や面積、人口、自然環境など、南区の概要をわかりやすく紹介します。",url: "https://www.city.sapporo.jp/minami/gaiyo/gaiyo.html"},
+                {title: "自然がいっぱいの南区の見どころ",text: "藻岩山や定山渓、滝野すずらん丘陵公園など、南区の代表的な自然・観光スポットを学べます。",url: "https://www.city.sapporo.jp/minami/gaiyo/midokoro.html"},
+                {title: "数字で見る札幌市南区",text: "人口や世帯数、面積など、南区を『数字』から知ることができるデータをまとめたページです。",url: "https://www.seikatsu-guide.com/info/1/1106/1/"}
+            ],
+            その他: [
+                { title: "企業DX推進に向けた支援", text: "知っておくと便利な行政のIT活用支援情報。副業や起業にも役立ちます。", url: "https://www.city.sapporo.jp/keizai/top/topics/it/kigyoudx.html?utm_source=chatgpt.com" },
+                { title: "中小企業への融資・支援", text: "地域で働く社会人に向けて、起業や独立にも使える支援制度を紹介。", url: "https://www.city.sapporo.jp/keizai/chusho/index.html" },
+                { title: "事業所から出るごみ", text: "一人暮らしでも誤りやすいゴミ分別のルールをわかりやすく解説。", url: "https://www.city.sapporo.jp/seiso/jigyousyo/jigyousyo.html" }
+            ],
+            観光: [
+                { title: "藻岩山の絶景を楽しむ", text: "四季ごとに表情を変える藻岩山の魅力を紹介します。", url: "#" },
+                { title: "定山渓温泉で癒される", text: "札幌の奥座敷・定山渓で楽しむ温泉旅。", url: "#" },
+                { title: "芸術の森でアート散策", text: "自然と芸術が融合した南区の人気スポットを歩く。", url: "#" }
+            ],
+            引っ越し検討: [
+                { title: "南区の住みやすさをチェック", text: "治安・交通・買い物環境など、暮らしに役立つ情報を紹介。", url: "#" },
+                { title: "ファミリーに人気のエリア", text: "子育て世帯が安心して暮らせるエリアを紹介します。", url: "#" },
+                { title: "南区役所の手続きガイド", text: "引っ越し時に必要な手続きをまとめた便利情報。", url: "https://www.city.sapporo.jp/minami/" }
+            ],
+            子育て: [
+                { title: "子どもと遊べる南区の公園", text: "親子で楽しめる遊び場をピックアップ。", url: "#" },
+                { title: "保育園・幼稚園選びのポイント", text: "初めての子育てでも安心の園選びガイド。", url: "#" },
+                {
+                    title: "子育て支援サービスの紹介", text: "相談窓口や助成制度など、役立つ情報をまとめました。", url: "https://www.city.sapporo.jp/minami/kosodate/"
+                }
+            ],
+            シニア: [
+                { title: "シニア向け健康づくり", text: "無理なく続けられる運動教室や散歩コースを紹介。", url: "#" },
+                {
+                    title: "高齢者支援サービスまとめ", text: "介護・相談・見守りなど、地域の支援情報を掲載。", url: "https://www.city.sapporo.jp/minami/fukushi/"
+                },
+                { title: "南区で楽しむ季節のイベント", text: "地域で参加できる行事や交流の場を紹介します。", url: "#" }
             ]
         };
 

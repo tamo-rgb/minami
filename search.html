@@ -368,14 +368,6 @@
     window.addEventListener('load', () => {
       const hasVisitedSearch = localStorage.getItem('hasVisitedSearch');
 
-      if (!hasVisitedSearch) {
-        // 初回訪問 → ツアーを自動開始
-        startTourSearch();
-
-        // 2回目以降は表示しないようにフラグを保存
-        localStorage.setItem('hasVisitedSearch', 'true');
-      }
-
       // フォントサイズ設定はそのまま
       const savedFontSize = localStorage.getItem('fontSize');
       if (savedFontSize) {
