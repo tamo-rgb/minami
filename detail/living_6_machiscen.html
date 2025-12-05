@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="180x180" href="/data/icon.png">
     <link rel="icon" type="image/icon" href="/data/favcon.png">
-    <title>ごみステーションに出すごみ・資源物｜札幌市</title>
+    <title>まちづくりセンター｜札幌市南区</title>
 
     <!-- フォント（統一） -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
@@ -121,6 +121,7 @@
             font-size: var(--font-p);
         }
 
+        /* 見出しレベル4・リスト */
         h4 {
             margin: 8px 0 4px;
             font-size: 1rem;
@@ -142,12 +143,12 @@
 
         .detail {
             padding-left: 20px;
-            margin: 4px 0 0;
+            margin: 8px 0 0;
             font-size: var(--font-p);
         }
 
         .detail li {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         /* ===== テーブル ===== */
@@ -176,80 +177,9 @@
             padding: 10px;
             border-bottom: 1px solid #ddd;
             background-color: #fff;
-            vertical-align: top;
         }
 
-        /* ===== トグルリスト（details） ===== */
-        .toggle-list {
-            margin: 8px 0;
-            border-radius: 8px;
-            border: 1px solid #dbe7d0;
-            background-color: #f8fdf5;
-        }
-
-        .toggle-list summary {
-            cursor: pointer;
-            padding: 8px 10px;
-            font-weight: 600;
-            list-style: none;
-        }
-
-        .toggle-list[open] {
-            background-color: #f5fbef;
-        }
-
-        .toggle-list summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .toggle-list summary::after {
-            content: "＋";
-            float: right;
-            font-weight: 700;
-        }
-
-        .toggle-list[open] summary::after {
-            content: "－";
-        }
-
-        .toggle-list-content {
-            padding: 0 10px 8px 16px;
-        }
-
-        .toggle-list-content ul {
-            margin: 4px 0 0;
-            padding-left: 16px;
-        }
-
-        .toggle-list-content li {
-            margin-bottom: 4px;
-        }
-
-        /* ===== よくある質問 ===== */
-        .faq-item {
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed #e0e0e0;
-        }
-
-        .faq-q {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .faq-q::before {
-            content: "Q.";
-            margin-right: 4px;
-            color: var(--color-primary);
-        }
-
-        .faq-a::before {
-            content: "A.";
-            margin-right: 4px;
-            font-weight: 600;
-        }
-
-        /* ===== 関連情報・カード ===== */
+        /* ===== 追記事項・関連情報カード ===== */
         .add-section {
             margin: 12px 15px 20px;
             padding: 14px 16px;
@@ -290,8 +220,6 @@
         .add-section a.content-box:hover {
             background-color: #f7fff0;
         }
-
-
     </style>
 </head>
 
@@ -315,465 +243,201 @@
                 <a href="/index.html">ホームページ</a> ＞
                 <a href="/search.html">情報を探す</a> ＞
                 <a href="/search/search_living.html">暮らし・手続き</a> ＞
-                <span>ごみステーションに出すごみ・資源物</span>
+                <span>まちづくりセンター</span>
             </nav>
 
             <!-- タイトル -->
             <section class="top-contents">
-                <h1 class="midashi">ごみステーションに出すごみ・資源物</h1>
-                <p>札幌市では、ごみステーションで9種類のごみ・資源物を分別して収集しています。収集日や分け方のルールを守り、適切な排出にご協力ください。</p>
+                <h1 class="midashi">まちづくりセンター</h1>
+                <p>「市民が主体のまちづくり」を進める地域の拠点として、南区内各地区に設置されているまちづくりセンターについてご案内します。</p>
             </section>
 
-            <!-- 目次（アンカーリンク） -->
+            <!-- 目次 -->
             <div class="toc">
                 <ul>
-                    <li><a href="#section-0">ごみ・資源物の種類</a></li>
-                    <li><a href="#type-moyaseru">燃やせるごみ</a></li>
-                    <li><a href="#type-moyasenai">燃やせないごみ</a></li>
-                    <li><a href="#type-bin">びん・缶・ペットボトル</a></li>
-                    <li><a href="#type-plastic">容器包装プラスチック</a></li>
-                    <li><a href="#type-zatsugami">雑がみ</a></li>
-                    <li><a href="#type-eda">枝・葉・草</a></li>
-                    <li><a href="#type-spray">スプレー缶・カセットボンベ</a></li>
-                    <li><a href="#type-battery">筒型乾電池</a></li>
-                    <li><a href="#type-tobacco">加熱式たばこ・電子たばこ、ライター</a></li>
-                    <li><a href="#section-faq">よくある質問Q&A</a></li>
-                    <li><a href="#section-toggle">その他のごみ・資源物の情報</a></li>
-                    <li><a href="#section-contact">お問い合わせ</a></li>
+                    <li><a href="#section-1">まちづくりセンターとは？</a></li>
+                    <li><a href="#section-2">業務時間・休み</a></li>
+                    <li><a href="#section-3">各地区のまちづくりセンター</a></li>
+                    <li><a href="#section-4">まちづくりセンターの主な業務</a></li>
+                    <li><a href="#section-5">地域のまちづくり相談</a></li>
+                    <li><a href="#section-6">このページについてのお問い合わせ</a></li>
                 </ul>
             </div>
 
-            <!-- セクション：概要・種類一覧 -->
-            <div id="section-0" class="section">
-                <h3>ごみステーション収集の概要</h3>
-                <div class="contents">
-                    <p>札幌市では、次の9種類のごみ・資源物を、ごみステーションで分別収集しています。</p>
-                    <ul>
-                        <li>燃やせるごみ</li>
-                        <li>燃やせないごみ</li>
-                        <li>びん・缶・ペットボトル</li>
-                        <li>容器包装プラスチック</li>
-                        <li>雑がみ</li>
-                        <li>枝・葉・草</li>
-                        <li>スプレー缶・カセットボンベ</li>
-                        <li>筒型乾電池</li>
-                        <li>加熱式たばこ・電子たばこ、ライター</li>
-                    </ul>
+            <!-- セクション1：まちづくりセンターとは？ -->
+            <div id="section-1" class="section">
+                <h3>まちづくりセンターとは？</h3>
+                <p>札幌市自治基本条例の基本理念である「市民が主体のまちづくり」を積極的に進めるために、従来の連絡所の機能を強化し、さまざまなまちづくり活動の拠点としてスタートしたのが「まちづくりセンター」です。</p>
+                <p>皆さまと地域の課題について共有し相談し合える場所にしたいと考えています。センター職員一同お待ちしておりますので、お気軽にお立ち寄りください。</p>
 
-                    <h4>ご利用にあたっての注意事項</h4>
+                <div class="contents">
+                    <h4>まちづくりセンターの位置づけ</h4>
                     <ul>
-                        <li>各区分の詳細ルールは、それぞれの説明とリンク先ページを必ずご確認ください。</li>
-                        <li>収集日は地区ごとに異なります。「ごみ収集日カレンダー」でご確認ください。</li>
-                        <li>燃やせるごみ・燃やせないごみに分類される品目の中には、<strong>回収拠点で無料回収している資源物</strong>もあります。限りある資源を守るため、回収拠点での無料回収のご利用もご検討ください。</li>
+                        <li>地域のまちづくり活動の相談・支援を行う拠点です。</li>
+                        <li>地域住民、市民活動団体、各関係機関などをつなぐ「ハブ」としての役割を担っています。</li>
+                        <li>南区内各地区に設置されており、身近な相談窓口としてご利用いただけます。</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- 燃やせるごみ -->
-            <div id="type-moyaseru" class="section">
-                <h3>燃やせるごみ（有料）</h3>
+            <!-- セクション2：業務時間・休み -->
+            <div id="section-2" class="section">
+                <h3>業務時間・休み</h3>
                 <div class="contents">
-                    <p><strong>収集頻度：</strong>週2回</p>
-                    <p><strong>出し方：</strong>指定ごみ袋に入れて出してください。指定ごみ袋に入らないものは「大型ごみ（有料）」になります。</p>
+                    <h4>業務時間</h4>
+                    <p>8時45分～17時15分</p>
+                </div>
 
-                    <h4>主な品目</h4>
+                <div class="contents">
+                    <h4>休み</h4>
+                    <p>土・日・祝・年末年始</p>
+                </div>
+
+                <div class="contents">
+                    <h4>ご利用にあたって</h4>
                     <ul>
-                        <li>台所のごみ（生ごみなど）</li>
-                        <li>食用油（布や紙にしみ込ませるなどしてから）</li>
-                        <li>製品プラスチック（おもちゃ・バケツなどのプラスチック製品）</li>
-                        <li>汚れた紙（ピザの箱・油のしみた紙など）</li>
-                        <li>衣類・布類</li>
-                        <li>皮革・ゴム・ビニール製品</li>
-                        <li>木製品・材木類</li>
-                        <li>炭、乾燥剤、保冷剤、使い捨てカイロ　など</li>
+                        <li>窓口混雑時には、お待ちいただく場合があります。</li>
+                        <li>手続きの内容によっては、受付時間が異なることがありますので、事前に各センターへお問い合わせください。</li>
                     </ul>
-
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>家庭から出る庭木の剪定枝・刈芝・草花・落ち葉などは、通常は「枝・葉・草」に出してください。</li>
-                        <li>「枝・葉・草」の収集期間外（12月〜4月）や、やむを得ず「枝・葉・草」に出せない場合のみ、「燃やせるごみ」として収集します。</li>
-                    </ul>
-
-                    <p>詳しくは、「燃やせるごみ」のページをご覧ください。</p>
                 </div>
             </div>
 
-            <!-- 燃やせないごみ -->
-            <div id="type-moyasenai" class="section">
-                <h3>燃やせないごみ（有料）</h3>
+            <!-- セクション3：各地区のまちづくりセンター -->
+            <div id="section-3" class="section">
+                <h3>各地区のまちづくりセンター</h3>
+                <p></p>
+
+                <div class="table-wrapper">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>番号</th>
+                                <th>まちづくりセンター名</th>
+                                <th>住所</th>
+                                <th>電話番号</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>澄川まちづくりセンター</td>
+                                <td>〒005-0003　札幌市南区澄川3条2丁目6-1</td>
+                                <td>011-821-8585</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>藻岩下まちづくりセンター</td>
+                                <td>〒005-0034　札幌市南区南34条西9丁目2-1</td>
+                                <td>011-581-2001</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>真駒内まちづくりセンター</td>
+                                <td>〒005-0014　札幌市南区真駒内幸町2丁目2-1</td>
+                                <td>011-581-3025</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>藻岩まちづくりセンター</td>
+                                <td>〒005-0808　札幌市南区川沿8条2丁目4-15</td>
+                                <td>011-571-6121</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>石山まちづくりセンター</td>
+                                <td>〒005-0841　札幌市南区石山1条4丁目1-1</td>
+                                <td>011-591-8734</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>芸術の森地区まちづくりセンター</td>
+                                <td>〒005-0850　札幌市南区石山東7丁目1-31</td>
+                                <td>011-592-7009</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>藤野まちづくりセンター</td>
+                                <td>〒061-2282　札幌市南区藤野2条7丁目2-1</td>
+                                <td>011-591-7041</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>簾舞まちづくりセンター</td>
+                                <td>〒061-2263　札幌市南区簾舞3条6丁目8-25</td>
+                                <td>011-596-2059</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>定山渓まちづくりセンター（定山渓出張所）</td>
+                                <td>〒061-2302　札幌市南区定山渓温泉東4丁目315-4</td>
+                                <td>011-598-2191</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="contents">
-                    <p><strong>収集頻度：</strong>4週に1回</p>
-                    <p><strong>出し方：</strong>指定ごみ袋に入れて出してください。指定ごみ袋に入らないものは「大型ごみ（有料）」です。</p>
-
-                    <h4>主な品目</h4>
-                    <ul>
-                        <li>塗料缶の容器など（「容器包装プラスチック」「びん・缶・ペットボトル」で対象外のもの）</li>
-                        <li>小型家電製品（テレビやパソコンなど、市で収集しないものを除く）</li>
-                        <li>金属製品</li>
-                        <li>ブロック・レンガ</li>
-                        <li>ガラス・せともの</li>
-                        <li>蛍光管（厚紙などで包み、指定ごみ袋に「キケン」と表示して）など</li>
-                    </ul>
-
-                    <p>詳しくは、「燃やせないごみ」のページをご覧ください。</p>
+                    <p>各まちづくりセンターのページにて、地域の活動・特色等を紹介しております。</p>
                 </div>
             </div>
 
-            <!-- びん・缶・ペットボトル -->
-            <div id="type-bin" class="section">
-                <h3>びん・缶・ペットボトル（無料）</h3>
+            <!-- セクション4：まちづくりセンターの主な業務 -->
+            <div id="section-4" class="section">
+                <h3>まちづくりセンターの主な業務</h3>
+                <p>まちづくりセンターでは、戸籍、住民票、印鑑証明など各種証明書の発行の取り次ぎのほか、町内会等住民組織の振興、地区の福祉活動の支援に関することなど従前から実施している業務に加えて、地域の状況に併せて次のような業務を行うことで、地域のまちづくり活動がより行いやすく、さらに活発になるよう、活動の支援をしています。</p>
+
                 <div class="contents">
-                    <p><strong>収集頻度：</strong>週1回</p>
-                    <p><strong>出し方：</strong>透明または半透明の袋に入れて出してください。</p>
+                    <h4>地域情報の交流や市政情報の提供</h4>
+                    <p>住民が親しみやすい雰囲気を作り、地域のまちづくりや課題あるいは市政に関する情報提供・相談事務を実施していきます。</p>
+                </div>
 
-                    <h4>主な品目</h4>
-                    <ul>
-                        <li>空きびん</li>
-                        <li>空き缶</li>
-                        <li>ペットボトル（ペットマークの付いた容器）</li>
-                    </ul>
+                <div class="contents">
+                    <h4>住民組織等のネットワーク化の支援</h4>
+                    <p>町内会、商店街、企業、PTA、ボランティア、NPOなど幅広い団体を対象としたネットワークづくりを行い、まちづくり協議会の設立・運営を支援します。</p>
+                </div>
 
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>中身が残っていたり、汚れが付着している場合は、水で軽くすすいでください。</li>
-                        <li>プラスチック製ラベルははがして「容器包装プラスチック」へ。</li>
-                        <li>プラスチック製のふたは「容器包装プラスチック」へ。</li>
-                        <li>アルミボトルのふたははずして「びん・缶・ペットボトル」へ。</li>
-                        <li>上記以外のふたは「燃やせないごみ」へ。</li>
-                    </ul>
-
-                    <p>詳しくは、「びん・缶・ペットボトル」のページをご覧ください。</p>
+                <div class="contents">
+                    <h4>地区のまちづくりに関する施策等の企画及び推進に係る調整</h4>
+                    <p>まちづくりセンターが中心となって、市役所内部や住民組織等との連携、調整をより一層円滑に進めていきます。</p>
                 </div>
             </div>
 
-            <!-- 容器包装プラスチック -->
-            <div id="type-plastic" class="section">
-                <h3>容器包装プラスチック（無料）</h3>
+            <!-- セクション5：地域のまちづくり相談 -->
+            <div id="section-5" class="section">
+                <h3>地域のまちづくりに関するお問い合わせ</h3>
+                <p>地域のまちづくりに関するお問い合わせは、各まちづくりセンターまたは南区地域振興課へお気軽にどうぞ。</p>
+
                 <div class="contents">
-                    <p><strong>収集頻度：</strong>週1回</p>
-                    <p><strong>出し方：</strong>透明または半透明の袋に入れて出してください。</p>
-
-                    <h4>主な品目</h4>
                     <ul>
-                        <li>プラマークの付いた容器・包装類</li>
-                        <li>パック・カップ類</li>
-                        <li>プラスチック製ボトル類</li>
-                        <li>ネット類、チューブ類、トレイ類</li>
-                        <li>ポリ袋、ラップ類</li>
-                        <li>プラスチック製のふた・ラベル</li>
-                        <li>緩衝材、発泡スチロール　など</li>
+                        <li>地域活動を始めてみたい。</li>
+                        <li>町内会や地域の行事について知りたい。</li>
+                        <li>地域の課題を相談したい　など</li>
                     </ul>
-
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>中身が残っていたり、汚れが付着している場合は、水で軽くすすいでください。</li>
-                        <li><strong>リチウムイオン電池を使用した家電製品や危険物は絶対に入れないでください。</strong></li>
-                    </ul>
-
-                    <p>詳しくは、「容器包装プラスチック」のページをご覧ください。</p>
+                    <p>身近な相談窓口として、まちづくりセンターをご利用ください。</p>
                 </div>
             </div>
 
-            <!-- 雑がみ -->
-            <div id="type-zatsugami" class="section">
-                <h3>雑がみ（無料）</h3>
-                <div class="contents">
-                    <p><strong>収集頻度：</strong>2週に1回</p>
-                    <p><strong>出し方：</strong>透明または半透明の袋に入れて出してください。</p>
-
-                    <h4>主な品目</h4>
-                    <ul>
-                        <li>紙箱類</li>
-                        <li>紙缶・紙カップ類</li>
-                        <li>台紙類、カレンダー</li>
-                        <li>レシート、包装紙類、紙袋類</li>
-                        <li>はがき、手紙、封筒、写真</li>
-                        <li>トイレットペーパーの芯</li>
-                        <li>シュレッダーなどで裁断した紙</li>
-                    </ul>
-
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>水で洗っても汚れが落ちないものは「燃やせるごみ」へ。</li>
-                        <li>新聞・雑誌・ダンボールは、集団資源回収や回収拠点へ出してください。</li>
-                        <li>やむを得ず出せない場合は、有料の指定ごみ袋に入れて「燃やせるごみ」の日に出すこともできます。</li>
-                    </ul>
-
-                    <p>詳しくは、「雑がみ」のページをご覧ください。</p>
-                </div>
-            </div>
-
-            <!-- 枝・葉・草 -->
-            <div id="type-eda" class="section">
-                <h3>枝・葉・草（無料）</h3>
-                <div class="contents">
-                    <p><strong>収集頻度：</strong>4週に1回</p>
-                    <p><strong>収集期間：</strong>5月〜12月中旬（地区により異なります）</p>
-
-                    <h4>出し方</h4>
-                    <ul>
-                        <li><strong>枝：</strong>長さ50cm以下に切り、1mくらいの束になるようひもで縛ってください。</li>
-                        <li><strong>草・葉：</strong>透明または半透明の袋に入れてください。</li>
-                    </ul>
-
-                    <h4>主な品目</h4>
-                    <ul>
-                        <li>刈芝</li>
-                        <li>草花</li>
-                        <li>落ち葉</li>
-                        <li>庭木の剪定枝</li>
-                    </ul>
-
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>野菜や果実（果物）、材木類、木製品、竹やむしろなどの冬囲い用品は対象外です。</li>
-                        <li>対象外のものは、大きさに応じて「燃やせるごみ」または「大型ごみ」に出してください。</li>
-                    </ul>
-
-                    <p>詳しくは、「枝・葉・草」のページをご覧ください。</p>
-                </div>
-            </div>
-
-            <!-- スプレー缶・カセットボンベ -->
-            <div id="type-spray" class="section">
-                <h3>スプレー缶・カセットボンベ（無料）</h3>
-                <div class="contents">
-                    <p><strong>収集頻度：</strong>週2回（「燃やせるごみ」の日と同じ）</p>
-                    <p><strong>出し方：</strong>透明または半透明の袋に入れて出してください（燃やせるごみの指定袋とは別の袋）。</p>
-
-                    <h4>主な品目</h4>
-                    <ul>
-                        <li>整髪料スプレー</li>
-                        <li>殺虫剤スプレー</li>
-                        <li>卓上ガスボンベ　など</li>
-                    </ul>
-
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>中身を使い切ってから出してください。</li>
-                        <li><strong>穴はあけないでください。</strong></li>
-                        <li>平成29年7月から排出ルールを変更しています。</li>
-                    </ul>
-
-                    <p>詳しくは、「スプレー缶・カセットボンベ」のページをご覧ください。中身を使い切れない場合の処分方法も掲載しています。</p>
-                </div>
-            </div>
-
-            <!-- 筒型乾電池 -->
-            <div id="type-battery" class="section">
-                <h3>筒型乾電池（無料）</h3>
-                <div class="contents">
-                    <p><strong>収集頻度：</strong>週1回（「びん・缶・ペットボトル」の日と同じ）</p>
-                    <p><strong>出し方：</strong>透明または半透明の袋に入れて出してください（びん・缶・ペットボトルの袋とは別の袋）。</p>
-
-                    <h4>主な品目</h4>
-                    <ul>
-                        <li>単1〜単5電池</li>
-                        <li>角型9V電池などの使い捨て電池</li>
-                    </ul>
-
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>次の電池は出せません：
-                            <ul class="detail">
-                                <li>小型充電式電池（ニカド電池、ニッケル水素電池、リチウムイオン電池）</li>
-                                <li>ボタン電池</li>
-                                <li>リチウムコイン電池</li>
-                            </ul>
-                        </li>
-                        <li>これらの処分方法は、「筒型乾電池」の詳細ページ内でご案内しています。</li>
-                        <li>令和3年10月から排出ルールを変更しました。</li>
-                    </ul>
-
-                    <p>詳しくは、「筒型乾電池」のページをご覧ください。</p>
-                </div>
-            </div>
-
-            <!-- 加熱式たばこ・電子たばこ、ライター -->
-            <div id="type-tobacco" class="section">
-                <h3>加熱式たばこ・電子たばこ、ライター（無料）</h3>
-                <div class="contents">
-                    <p><strong>収集頻度：</strong>4週に1回（「燃やせないごみ」の日と同じ）</p>
-                    <p><strong>出し方：</strong>透明または半透明の袋に入れて出してください（燃やせないごみの指定袋とは別の袋）。</p>
-
-                    <h4>主な品目</h4>
-                    <ul>
-                        <li>加熱式たばこ・電子たばこ本体</li>
-                        <li>使い捨てライター</li>
-                    </ul>
-
-                    <h4>注意点</h4>
-                    <ul>
-                        <li>ライターは中身を使い切ってから出してください。</li>
-                        <li>平成29年7月からライターの排出ルールを変更しています。</li>
-                        <li>令和3年10月から加熱式たばこ・電子たばこの排出ルールを変更しています。</li>
-                    </ul>
-
-                    <p>詳しくは、「加熱式たばこ・電子たばこ、ライター」のページをご覧ください。中身を使いきれないライターの処分方法も掲載しています。</p>
-                </div>
-            </div>
-
-            <!-- よくある質問 -->
-            <div id="section-faq" class="section">
-                <h3>よくある質問Q&A</h3>
-
-                <div class="contents">
-                    <div class="faq-item">
-                        <div class="faq-q">ごみは祝日の場合でも収集していますか。</div>
-                        <div class="faq-a">
-                            ごみ収集は、土曜日・日曜日・年末年始を除き、祝日や振替休日も収集しています。
-                            収集日については「ごみ収集日カレンダー」でご確認ください。
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q">収集日なのに、なかなかごみを取りに来ません。</div>
-                        <div class="faq-a">
-                            収集車のルートの関係で、収集が午後になる場合があります。
-                            収集時間が極端に遅い場合は、お住まいの区を担当する清掃事務所へご連絡ください。
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q">「半透明の袋」とは、どの程度の透明度ですか。</div>
-                        <div class="faq-a">
-                            収集作業員が中身を確認できる程度の透明度が必要です。
-                            指定ごみ袋と同程度以上の透明度で、中身が見える袋をお使いください。
-                            白・黄・青・緑などの明るい色で中身が見えるものは使用できますが、
-                            黒・灰・茶色など暗い色の袋は、中身が見えにくくなるため使用できません。
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q">乳白色のレジ袋は、半透明の袋として使えますか。</div>
-                        <div class="faq-a">
-                            中身がはっきり見える程度の透明度があれば使用できますが、
-                            最近の乳白色のレジ袋は以前より色が濃く、中身が見えにくいものも多くなっています。
-                            指定のごみ袋と同程度以上の透明度がないものは使用できませんので、ご注意ください。
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q">犬・猫などペットの死体はどう処理すればよいですか。</div>
-                        <div class="faq-a">
-                            飼い犬・猫などのペットを葬る場合（有料）は、
-                            「動物管理センター（札幌市西区八軒9条5丁目 電話：011-736-6134）」へご相談ください。
-                            飼い主が不明な場合（公道上の死体など）は、その区を担当する清掃事務所、
-                            または札幌市コールセンター（電話：011-222-4894）までご連絡ください。
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- トグルリスト：その他の情報 -->
-            <div id="section-toggle" class="section">
-                <h3>その他のごみ・資源物に関する情報</h3>
-
-                <!-- 資源物の無料回収 -->
-                <details class="toggle-list">
-                    <summary>資源物の無料回収</summary>
-                    <div class="toggle-list-content">
-                        <ul>
-                            <li>集団資源回収（町内会等による新聞・雑誌・ダンボールなどの収集）</li>
-                            <li>資源物の無料回収一覧（資源物別の一覧）</li>
-                            <li>古紙（新聞・雑誌・ダンボール）の無料回収</li>
-                            <li>小型家電の無料回収</li>
-                            <li>古着の無料回収</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- 大型ごみの出し方 -->
-                <details class="toggle-list">
-                    <summary>大型ごみの出し方</summary>
-                    <div class="toggle-list-content">
-                        <ul>
-                            <li>大型ごみ（大型ごみのリユース（再利用）収集を含む）</li>
-                            <li>民間サービスを活用してリユースする</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- 民間サービスを活用してリユース -->
-                <details class="toggle-list">
-                    <summary>民間サービスを活用してリユース</summary>
-                    <div class="toggle-list-content">
-                        <ul>
-                            <li>民間サービスを活用してリユース（フリマアプリ・リサイクルショップ等の活用）</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- 市では収集・受け入れしないごみ -->
-                <details class="toggle-list">
-                    <summary>市では収集・受け入れしないごみの処分方法</summary>
-                    <div class="toggle-list-content">
-                        <ul>
-                            <li>テレビ・冷蔵庫・洗濯機・エアコンリサイクル（家電リサイクル法対象品）</li>
-                            <li>パソコンリサイクル</li>
-                            <li>市が収集しないごみ（一覧と処分方法）</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- 市の施設へ自分で持ち込む -->
-                <details class="toggle-list">
-                    <summary>市の施設へ自分で持ち込む</summary>
-                    <div class="toggle-list-content">
-                        <ul>
-                            <li>家庭ごみの自己搬入（市のごみ処理施設にごみを持ち込む場合）<br>
-                                ┗ 燃やせるごみ・燃やせないごみ・大型ごみ等の持ち込み先</li>
-                            <li>地区リサイクルセンター（資源物の持ち込み先）</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <!-- お知らせ・お願い -->
-                <details class="toggle-list">
-                    <summary>お知らせ・お願い</summary>
-                    <div class="toggle-list-content">
-                        <ul>
-                            <li>製品プラスチック回収の検討について</li>
-                            <li>ペットボトルをペットボトルにリサイクルする「ボトルtoボトル試行事業」の開始について</li>
-                            <li>リチウムイオン電池を使用した家電製品や危険物を容器包装プラスチックに出さないでください</li>
-                            <li>引越しなどで一時的に多量に出るごみの処理について</li>
-                            <li>清掃工場での火災の原因となるごみについて</li>
-                            <li>ごみ収集車の火災について</li>
-                            <li>違法な不用品回収業者にご注意ください</li>
-                            <li>アスベスト含有製品（バスマット等）の流通とメーカー等による回収について</li>
-                            <li>令和3年度の大雪による家庭ごみ収集への影響について</li>
-                        </ul>
-                    </div>
-                </details>
-            </div>
-
-            <!-- 関連ページ -->
-            <div class="add-section">
-                <h3>関連ページ</h3>
-                <ul>
-                    <li>大型ごみ：大型ごみの出し方、申込先</li>
-                    <li>家庭ごみ50音分別辞典：処分したいものの名前から、ごみの出し方を調べることができます。</li>
-                    <li>ごみ収集日カレンダー</li>
-                    <li>集団資源回収：新聞・雑誌・ダンボールなどの収集日を調べることができます。</li>
-                    <li>市が収集しないごみ：テレビ・冷蔵庫・洗濯機・エアコンのリサイクル、パソコンリサイクル、充電式電池のリサイクルなどについて</li>
-                    <li>引越しや遺品の整理などで一時的に多量に出るごみの処理について</li>
-                    <li>ごみ・リサイクルのお問い合わせ先</li>
-                </ul>
-                <a href="search.html" class="content-box">
-                    ごみ・リサイクルに関する他のページを見る
-                </a>
-            </div>
-
-            <!-- お問い合わせ -->
-            <div id="section-contact" class="section">
+            <!-- セクション6：お問い合わせ -->
+            <div id="section-6" class="section">
                 <h3>このページについてのお問い合わせ</h3>
-                <p>
-                    札幌市環境局 環境事業部 業務課<br>
-                    〒060-8611 札幌市中央区北1条西2丁目 札幌市役所本庁舎13階<br>
-                    電話番号：011-211-2916（内線：2916）<br>
-                    ファクス番号：011-218-2105
-                </p>
-                <p>お問い合わせフォームからもご相談いただけます。</p>
+                <p>札幌市南区 市民部 地域振興課<br>
+                    〒005-8612 札幌市南区真駒内幸町2丁目2-1</p>
+                <p>電話番号：011-582-4723<br>
+                    ファクス番号：011-582-5470</p>
+                <p>その他のお問い合わせは、<a href="#" target="_blank">お問い合わせフォーム</a>をご利用ください。</p>
+            </div>
+
+            <!-- 関連情報カード -->
+            <div class="add-section">
+                <h3>関連情報</h3>
+                <ul>
+                    <li>南区内の地域活動・イベント情報</li>
+                    <li>町内会・市民活動団体のご案内</li>
+                    <li>札幌市自治基本条例について</li>
+                </ul>
+                <a href="/search/search_living.html" class="content-box">
+                    暮らし・手続きに関する他のページを見る
+                </a>
             </div>
 
             <!-- フッター -->
@@ -791,6 +455,7 @@
         // 上に戻るボタン
         const backToTopBtn = document.getElementById('backToTopBtn');
 
+        // 一定量スクロールしたらボタン表示
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopBtn.style.display = 'flex';
@@ -799,6 +464,7 @@
             }
         });
 
+        // クリックで先頭へスムーズスクロール
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
