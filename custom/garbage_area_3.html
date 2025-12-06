@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>南区1</title>
+    <title>南区 area_3</title>
 
     <!-- フォント -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
@@ -44,9 +44,8 @@
             color: #333;
         }
 
-        /* ページ上部タイトル部分 */
         .top-contents {
-            margin: 0px 0px 0px 0px;
+            margin: 0;
             padding: 10px 20px;
             background-color: #fff;
             border-bottom: 2px solid #2e8b57;
@@ -63,9 +62,14 @@
             font-size: var(--font-p);
         }
 
-        /* 目次ブロック */
+        .updated-date {
+            margin-top: 4px;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
         .toc {
-            margin: 0px 10px;
+            margin: 0 10px;
             padding: 10px 10px;
             border-radius: 0 0 10px 10px;
         }
@@ -73,7 +77,7 @@
         .toc ul {
             list-style: none;
             padding: 0;
-            margin: 0 0;
+            margin: 0;
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
@@ -98,7 +102,6 @@
             opacity: 0.9;
         }
 
-        /* 各ごみカレンダーセクション */
         .section {
             margin: 0 15px 12px;
             padding: 14px 14px 12px;
@@ -118,7 +121,7 @@
 
         .section .contents ul {
             padding-left: 18px;
-            margin: 4px 0px 20px 0px;
+            margin: 4px 0 20px 0;
         }
 
         .contents ul li {
@@ -144,7 +147,6 @@
             opacity: 0.85;
         }
 
-        /* ===== トグルリスト ===== */
         .toggle-list {
             margin-top: 8px;
         }
@@ -204,7 +206,6 @@
             font-size: var(--font-p);
         }
 
-        /* ===== 追記事項・関連情報カード ===== */
         .add-section {
             margin: 12px 15px 20px;
             padding: 14px 16px;
@@ -227,7 +228,6 @@
             font-size: var(--font-p);
         }
 
-        /* どこでも使えるボタンリンク */
         a.content-box {
             display: flex;
             justify-content: center;
@@ -251,77 +251,56 @@
 
 <body>
     <div class="wrapper">
-        <!-- ヘッダー読み込み -->
         <div id="header"></div>
-
-        <!-- ヘッダー分の余白 -->
         <div style="height:60px; background-color:#fff;"></div>
 
         <main>
-            <!-- ページタイトル＋説明 -->
             <section class="top-contents">
-                <h1 class="midashi">ごみ収集日（南区）</h1>
-                <p>澄川地区は2区に分かれています</p>
+                <h1 class="midashi">お住まいのごみ収集について</h1>
+                <p>藤野・白川・簾舞・砥山・豊滝・硬石山・小金湯・定山渓温泉（西・東）・定山渓地区</p>
                 <p class="updated-date">更新日：2022年6月22日</p>
             </section>
 
-            <!-- 目次ボタン -->
             <div class="toc">
                 <ul>
-                    <li><a href="#section-1">南区1</a></li>
-                    <li><a href="#section-4">南区4</a></li>
+                    <li><a href="#section-1">ごみ収集日</a></li>
                     <li><a href="#toggle-bunbetsu">ごみの分別</a></li>
-                    <li><a href="#toggle-shigen">資源物の無料回収</a></li>
+                    <li><a href="#toggle-shigen">資源回収について</a></li>
                     <li><a href="#toggle-others">その他の地域</a></li>
                 </ul>
             </div>
 
-            <!-- 南区1 -->
             <div id="section-1" class="section">
-                <h3>澄川地区1 [南区1]</h3>
+                <h3>ごみ収集日</h3>
                 <div class="contents">
                     <ul>
-                        <li>澄川2条4丁目（12〜14番）・5丁目</li>
-                        <li>澄川3条4丁目（7番）・5丁目・6丁目</li>
-                        <li>澄川4条4丁目（1番18〜27号、2〜11番）・5丁目〜12丁目</li>
-                        <li>澄川5条4丁目（1番・7〜9番）・5丁目（1〜9番（9番1〜5除く））</li>
+                        <li>藤野</li>
+                        <li>白川</li>
+                        <li>簾舞</li>
+                        <li>砥山</li>
+                        <li>豊滝</li>
+                        <li>硬石山</li>
+                        <li>小金湯</li>
+                        <li>定山渓温泉（西・東）</li>
+                        <li>定山渓</li>
                     </ul>
                     <p>下のPDFより確認できます</p>
-                    <a href="#" class="pdf-link">通年版（PDF：1,457KB）</a><br>
-                    <a href="#" class="pdf-link">外国語版 前期（PDF：2,117KB）</a><br>
-                    <a href="#" class="pdf-link">外国語版 後期（PDF：1,423KB）</a><br>
+                    <a href="https://www.city.sapporo.jp/seiso/kaisyu/08_minami/documents/07minami3_07090809.pdf"
+                        class="pdf-link">通年版（PDF：1,440KB）</a><br>
+                    <a href="https://www.city.sapporo.jp/seiso/kaisyu/08_minami/documents/07minami3f_07090802.pdf"
+                        class="pdf-link">外国語版 前期（PDF：2,102KB）</a><br>
+                    <a href="https://www.city.sapporo.jp/seiso/kaisyu/08_minami/documents/07minami3f_08030809.pdf"
+                        class="pdf-link">外国語版 後期（PDF：1,419KB）</a><br>
                     <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
                 </div>
             </div>
 
-            <!-- 南区4 -->
-            <div id="section-4" class="section">
-                <h3>澄川地区2 [南区4]</h3>
-                <div class="contents">
-                    <ul>
-                        <li>澄川1条1〜4丁目</li>
-                        <li>澄川2条1丁目～3丁目・4丁目（1番～11番）</li>
-                        <li>澄川3条1丁目～3丁目・4丁目（1番～6番）</li>
-                        <li>澄川4条1丁目～3丁目・4丁目（1番1号～17号）</li>
-                        <li>澄川5条5丁目（9番1～5、10番～19番）・6丁目（9番～14番）</li>
-                        <li>澄川6条3丁目～6丁目</li>
-                    </ul>
-                    <p>下のPDFより確認できます</p>
-                    <a href="#" class="pdf-link">通年版（PDF：1,453KB）</a><br>
-                    <a href="#" class="pdf-link">外国語版 前期（PDF：2,116KB）</a><br>
-                    <a href="#" class="pdf-link">外国語版 後期（PDF：1,423KB）</a><br>
-                    <a href="#" class="pdf-link">月めくり版 表紙・各月PDF</a>
-                </div>
-            </div>
-
-            <!-- 南区4の下に追加：ごみ分別・資源回収・その他の地域（トグルリスト） -->
-            <div id="section-extra" class="section">
-                <h3>ごみの分別・資源物の無料回収・その他の地域</h3>
+            <div id="section-2" class="section">
+                <h3>ごみの分別・資源回収・その他の地域</h3>
                 <div class="contents">
                     <p>詳しい内容は、以下のトグルをタップ（クリック）してご覧ください。</p>
 
                     <div class="toggle-list">
-                        <!-- ごみの分別 -->
                         <div class="toggle-item" id="toggle-bunbetsu">
                             <button class="toggle-header" type="button" aria-expanded="false"
                                 aria-controls="toggle-bunbetsu-content">
@@ -340,15 +319,14 @@
                             </div>
                         </div>
 
-                        <!-- 資源物の無料回収 -->
                         <div class="toggle-item" id="toggle-shigen">
                             <button class="toggle-header" type="button" aria-expanded="false"
                                 aria-controls="toggle-shigen-content">
-                                <span class="label">資源物の無料回収</span>
+                                <span class="label">資源回収について</span>
                                 <span class="icon" aria-hidden="true">＋</span>
                             </button>
                             <div class="toggle-content" id="toggle-shigen-content" hidden>
-                                <p>資源物（古紙、缶、びん、ペットボトルなど）は、地域の集団回収や資源ごみ回収日に無料で出すことができます。</p>
+                                <p>資源物（古紙、缶、びん、ペットボトルなど）は、地域の集団回収や資源ごみ回収日に出すことができます。</p>
                                 <ul>
                                     <li>資源物ごとに、出し方（ひもで束ねる・中を水ですすぐ など）が決められています。</li>
                                     <li>回収方法は地域や団体によって異なる場合があります。回覧板や町内会のお知らせもご確認ください。</li>
@@ -359,7 +337,6 @@
                             </div>
                         </div>
 
-                        <!-- その他の地域 -->
                         <div class="toggle-item" id="toggle-others">
                             <button class="toggle-header" type="button" aria-expanded="false"
                                 aria-controls="toggle-others-content">
@@ -367,7 +344,7 @@
                                 <span class="icon" aria-hidden="true">＋</span>
                             </button>
                             <div class="toggle-content" id="toggle-others-content" hidden>
-                                <p>澄川地区以外の南区のごみ収集カレンダーは、別ページでご案内しています。</p>
+                                <p>藤野・白川・簾舞・砥山・豊滝・硬石山・小金湯・定山渓温泉（西・東）・定山渓地区以外の南区のごみ収集カレンダーは、別ページでご案内しています。</p>
                                 <ul>
                                     <li>お住まいの地区名を選んで、ごみ収集日カレンダーを確認してください。</li>
                                     <li>引っ越しなどで地区が変わった場合は、新しい地区のカレンダーをご確認ください。</li>
@@ -381,7 +358,6 @@
                 </div>
             </div>
 
-            <!-- 関連情報カード -->
             <div class="add-section">
                 <h3>関連情報</h3>
                 <ul>
@@ -397,31 +373,21 @@
     </div>
 
     <script>
-        // トグルリスト開閉処理
         document.addEventListener('DOMContentLoaded', () => {
             const toggles = document.querySelectorAll('.toggle-header');
-
             toggles.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const expanded = btn.getAttribute('aria-expanded') === 'true';
                     const contentId = btn.getAttribute('aria-controls');
                     const content = document.getElementById(contentId);
-
                     btn.setAttribute('aria-expanded', String(!expanded));
-                    if (content) {
-                        content.hidden = expanded;
-                    }
-
-                    // アイコン切り替え
+                    if (content) content.hidden = expanded;
                     const icon = btn.querySelector('.icon');
-                    if (icon) {
-                        icon.textContent = expanded ? '＋' : '－';
-                    }
+                    if (icon) icon.textContent = expanded ? '＋' : '－';
                 });
             });
         });
     </script>
 
 </body>
-
 </html>

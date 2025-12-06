@@ -25,7 +25,7 @@
             background-color: var(--color-gbg);
         }
 
-        /* パンくず */
+        /* ===== パンくずリスト ===== */
         .breadcrumb {
             padding: 10px;
             color: #555;
@@ -44,7 +44,11 @@
             text-decoration: underline;
         }
 
-        /* タイトル部分 */
+        .breadcrumb span {
+            color: #333;
+        }
+
+        /* ===== タイトル部分 ===== */
         .top-contents {
             margin: 20px 10px 0;
             padding: 12px 15px;
@@ -58,31 +62,53 @@
             font-size: 1.4rem;
         }
 
-        /* タブ切り替え */
-        .tab-container {
-            margin: 10px 10px 0;
+        .top-contents p {
+            margin: 0;
+            font-size: var(--font-p);
+        }
+
+        .updated-date {
+            margin-top: 4px;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* ===== タブナビゲーション ===== */
+        .tab-wrapper {
+            margin: 10px 15px 0;
+            background-color: transparent;
+        }
+
+        .tab-label {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .tab-nav {
             display: flex;
             gap: 8px;
-            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+            margin-top: 4px;
         }
 
         .tab-button {
-            flex: 1;
-            text-align: center;
-            padding: 10px 6px;
-            border: none;
-            border-radius: 10px 10px 0 0;
-            background-color: #f0f2f4;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
+            flex: 1 1 150px;
+            padding: 8px 10px;
+            border-radius: 20px 20px 0 0;
+            border: 1px solid var(--color-primary);
+            border-bottom: none;
+            background-color: #f0f5eb;
             color: #555;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
         }
 
         .tab-button.active {
             background-color: #ffffff;
             color: #222;
-            border: 1px solid #ddd;
             border-bottom: 1px solid #ffffff;
         }
 
@@ -94,11 +120,19 @@
             display: block;
         }
 
-        /* 目次（タブごと） */
+        /* ===== 目次（アンカーリンク） ===== */
         .toc {
-            margin: 0 10px;
+            margin: 0 10px 8px;
             padding: 10px 10px;
             border-radius: 0 0 10px 10px;
+        }
+
+        .toc-block {
+            display: none;
+        }
+
+        .toc-block.active {
+            display: block;
         }
 
         .toc ul {
@@ -113,7 +147,7 @@
         .toc ul li a {
             background-color: var(--color-primary);
             padding: 6px 12px;
-            color: #fff;
+            color: #ffffff;
             font-weight: 500;
             border-radius: 20px;
             text-decoration: none;
@@ -121,9 +155,13 @@
             display: inline-block;
         }
 
-        /* セクション（カード） */
+        .toc ul li a:hover {
+            opacity: 0.9;
+        }
+
+        /* ===== セクション（カード） ===== */
         .section {
-            margin: 12px 15px;
+            margin: 0 15px 12px;
             padding: 14px 16px;
             background-color: #fff;
             border-radius: 10px;
@@ -144,11 +182,51 @@
             font-size: var(--font-p);
         }
 
-        /* 表 */
+        /* 見出し・リスト */
+        h4 {
+            margin: 8px 0 4px;
+            font-size: 1rem;
+        }
+
+        h5 {
+            margin: 6px 0 4px;
+            font-size: 0.95rem;
+        }
+
+        .contents {
+            padding: 6px 0 4px;
+        }
+
+        .contents ul {
+            padding-left: 20px;
+            margin: 4px 0 10px;
+        }
+
+        .contents ul li {
+            margin-bottom: 6px;
+            font-size: var(--font-p);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 5px 0 10px;
+        }
+
+        .detail {
+            padding-left: 20px;
+            margin: 4px 0 0;
+            font-size: var(--font-p);
+        }
+
+        .detail li {
+            margin-bottom: 4px;
+        }
+
+        /* ===== テーブル ===== */
         .table-wrapper {
+            margin-top: 10px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            margin-top: 10px;
         }
 
         table.table {
@@ -159,7 +237,7 @@
         }
 
         table.table th {
-            background: var(--color-primary);
+            background-color: var(--color-primary);
             color: #fff;
             font-weight: 500;
             padding: 10px;
@@ -169,24 +247,50 @@
         table.table td {
             padding: 10px;
             border-bottom: 1px solid #ddd;
-            background: #fff;
+            background-color: #fff;
             vertical-align: top;
         }
 
-        /* 箇条書き */
-        ul {
+        /* ===== 関連情報・カード（使うなら） ===== */
+        .add-section {
+            margin: 12px 15px 20px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .add-section h3 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+        }
+
+        .add-section ul {
             padding-left: 20px;
-            margin: 5px 0 10px;
+            margin: 4px 0 10px;
         }
 
-        h4 {
-            margin: 8px 0 4px;
-            font-size: 1rem;
+        .add-section li {
+            font-size: var(--font-p);
         }
 
-        h5 {
-            margin: 6px 0 4px;
+        .add-section a.content-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0 0;
+            padding: 10px 16px;
+            border: 1px solid var(--color-primary);
+            background-color: var(--color-palegreen);
+            border-radius: 25px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 500;
             font-size: 0.95rem;
+        }
+
+        .add-section a.content-box:hover {
+            background-color: #f7fff0;
         }
     </style>
 </head>
@@ -209,26 +313,42 @@
             <section class="top-contents">
                 <h1 class="midashi">受理証明・市税証明のご案内</h1>
                 <p>受理証明書および市税証明の種類・手数料、請求できる方や必要書類などについてご案内します。</p>
+                <p class="updated-date">更新日：2022年6月21日</p>
             </section>
 
-            <!-- タブボタン -->
-            <div class="tab-container">
-                <button class="tab-button active" data-target="tab-juri">受理証明書</button>
-                <button class="tab-button" data-target="tab-shizei">市税証明</button>
+            <!-- タブ切り替え（目次より上） -->
+            <div class="tab-wrapper">
+                <p>知りたい内容を選択してください</p>
+                <div class="tab-nav">
+                    <button class="tab-button active" data-target="juri-content">受理証明書</button>
+                    <button class="tab-button" data-target="tax-content">市税証明</button>
+                </div>
             </div>
 
-            <!-- 受理証明書タブ -->
-            <div id="tab-juri" class="tab-content active">
-                <!-- 目次 -->
-                <div class="toc">
-                    <ul>
-                        <li><a href="#juri-types">証明書の種類と手数料</a></li>
-                        <li><a href="#juri-notes">受付窓口・注意事項</a></li>
-                        <li><a href="#juri-docs">申請時の必要書類</a></li>
-                        <li><a href="#juri-contact">お問い合わせ</a></li>
-                    </ul>
-                </div>
+            <!-- 目次：受理証明 -->
+            <div id="juri-toc" class="toc toc-block active">
+                <p>見出しに移動できます</p>
+                <ul>
+                    <li><a href="#juri-types">証明書の種類と手数料</a></li>
+                    <li><a href="#juri-notes">受付窓口・注意事項</a></li>
+                    <li><a href="#juri-docs">申請時の必要書類</a></li>
+                    <li><a href="#juri-contact">お問い合わせ</a></li>
+                </ul>
+            </div>
 
+            <!-- 目次：市税証明 -->
+            <div id="tax-toc" class="toc toc-block">
+                <p>見出しに移動できます</p>
+                <ul>
+                    <li><a href="#tax-types">市税証明の種類・手数料</a></li>
+                    <li><a href="#tax-who">証明と閲覧を請求できる方</a></li>
+                    <li><a href="#tax-how">市税証明の請求方法</a></li>
+                    <li><a href="#tax-contact">市税証明に関するお問い合わせ先</a></li>
+                </ul>
+            </div>
+
+            <!-- タブ：受理証明書 -->
+            <div id="juri-content" class="tab-content active">
                 <!-- 証明書の種類と手数料 -->
                 <div id="juri-types" class="section">
                     <h3>証明書の種類と手数料</h3>
@@ -292,28 +412,19 @@
 
                     <p>ご不明な点がありましたら、各区役所戸籍住民課（電話番号・所在地はこちら）へお問い合わせください。</p>
                 </div>
-                            <!-- お問い合わせ -->
-            <div id="juri-contact" class="section">
-                <h3>お問い合わせ</h3>
-                <p>札幌市南区 市民部 戸籍住民課<br>
-                    〒005-8612 札幌市南区真駒内幸町2丁目2-1<br>
-                    電話番号：000-000-0000<br>
-                    ファクス番号：000-000-0000</p>
-            </div>
-            </div>
 
-            <!-- 市税証明タブ -->
-            <div id="tab-shizei" class="tab-content">
-                <!-- 目次 -->
-                <div class="toc">
-                    <ul>
-                        <li><a href="#tax-types">市税証明の種類・手数料</a></li>
-                        <li><a href="#tax-who">証明と閲覧を請求できる方</a></li>
-                        <li><a href="#tax-how">市税証明の請求方法</a></li>
-                        <li><a href="#tax-contact">市税証明に関するお問い合わせ先</a></li>
-                    </ul>
+                <!-- お問い合わせ -->
+                <div id="juri-contact" class="section">
+                    <h3>お問い合わせ</h3>
+                    <p>札幌市南区 市民部 戸籍住民課<br>
+                        〒005-8612 札幌市南区真駒内幸町2丁目2-1<br>
+                        電話番号：000-000-0000<br>
+                        ファクス番号：000-000-0000</p>
                 </div>
+            </div>
 
+            <!-- タブ：市税証明 -->
+            <div id="tax-content" class="tab-content">
                 <!-- 市税証明の種類・手数料 -->
                 <div id="tax-types" class="section">
                     <h3>市税証明の種類・手数料</h3>
@@ -565,27 +676,58 @@
                 </div>
             </div>
 
-            <!-- 共通お問い合わせ（必要なら残してOK / タブ内にあるので省略も可） -->
+            <!-- （必要なら）関連情報カード -->
+            <!--
+            <div class="add-section">
+                <h3>関連情報</h3>
+                <ul>
+                    <li>戸籍に関する各種手続き</li>
+                    <li>税の窓口</li>
+                    <li>申請書・届出書のダウンロード</li>
+                </ul>
+                <a href="/search/search_living.html" class="content-box">
+                    暮らし・手続きに関する他のページを見る
+                </a>
+            </div>
+            -->
+
             <div id="footer"></div>
         </main>
     </div>
 
+    <!-- 上に戻るボタン -->
+    <div class="backtotop-wrapper">
+        <button id="backToTopBtn" aria-label="ページの先頭に戻る">▲</button>
+    </div>
+
     <script>
         // タブ切り替え
-        document.querySelectorAll('.tab-button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.dataset.target;
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const juriToc = document.getElementById('juri-toc');
+        const taxToc = document.getElementById('tax-toc');
 
-                // ボタンのactive切り替え
-                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        function activateTab(targetId) {
+            tabButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.target === targetId);
+            });
+            tabContents.forEach(content => {
+                content.classList.toggle('active', content.id === targetId);
+            });
 
-                // コンテンツのactive切り替え
-                document.querySelectorAll('.tab-content').forEach(tc => {
-                    tc.classList.toggle('active', tc.id === targetId);
-                });
+            if (targetId === 'juri-content') {
+                juriToc.classList.add('active');
+                taxToc.classList.remove('active');
+            } else if (targetId === 'tax-content') {
+                taxToc.classList.add('active');
+                juriToc.classList.remove('active');
+            }
+        }
 
-                // ページ上部へ少しスクロール（タイトルのあたり）
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.dataset.target;
+                activateTab(targetId);
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -593,33 +735,28 @@
             });
         });
 
-        // 市税タブ内のページ上部へ戻るなどのリンク対応が必要ならここに追記
+        // 初期表示
+        activateTab('juri-content');
+
+        // 上に戻るボタン
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
-<div class="backtotop-wrapper">
-    <button id="backToTopBtn" aria-label="ページの先頭に戻る">▲</button>
-</div>
 
 </body>
-<script>
-    // 上に戻るボタン
-    const backToTopBtn = document.getElementById('backToTopBtn');
-
-    // 一定量スクロールしたらボタン表示
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopBtn.style.display = 'flex';
-        } else {
-            backToTopBtn.style.display = 'none';
-        }
-    });
-
-    // クリックで先頭へスムーズスクロール
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-</script>
 
 </html>
